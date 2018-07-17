@@ -1,8 +1,25 @@
 
+
 header {
-  background-color: #639B3D;
+  background-color: #7F181B; /* RedCross Deep Red */
 }
 
 footer {
-    background-color: #000;
+    background-color: #000000; /* RedCross Black */
+    footer .footline .creative-commons {
+      order: 1; }
+}
+
+article > aside {
+    /* background-color: #D7D7D8 Red Cross Light Gray */
+    background-color: #FFFFFF /* Red Cross White */
+}
+
+html {
+  font-family: 'Arial', sans-serif;
+  font-size: 14px;
+}
+
+article section.page h1:first-of-type {
+  font-family: "Arial", sans-serif;
 }
