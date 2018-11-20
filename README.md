@@ -1,32 +1,63 @@
-# Mobile Data Collection Website
+## Docs
 
-## Overview
+Hello. Thanks for stopping by. This is a work in progress.
 
-* Documentation for POSM and OMK
-* This website is created with the Hugo static site generator. See https://gohugo.io and https://github.com/gohugoio/hugo.
-  - Hugo can be installed with prebuilt binaries for popular operating systems. You can also build your own binaries from source
-  - See https://gohugo.io/getting-started/installing/ for information
-* The site uses the docDock Hugo theme. See https://themes.gohugo.io/docdock/ and https://github.com/vjeantet/hugo-theme-docdock
-  * DocDock is currently installed as a submodule. This can be changed if it causes more problems than it solves
-  * If the themes/dockdock folder is empty, the following git command should populate the folder:
-  ```
-  git submodule update --init --recursive
-  ```
-* The site uses out-of-the-box functionality and does not make changes to the Hugo or docDock codebase.
+## Development
 
-## How to Manage Content
+### Section hierarchy
 
-* Focus is separating presentation from content
-  1. All MarkDown is located in the content directory
-  1. Static resources, such as images or css go into the static directory
-  1. Site navigation is inferred from the structure of the content folder. For example, the POSM section of the site is created from content/POSM
+```
 
-## Customizing the Presentation
+#########
+Heading 1
+#########
 
-* Focus on using the capabilities of the theme as-is or only using the theme's extension mechanisms
-* Adding additional JavaScript or css resources is a 2 step process:
-  1. Add a reference in layouts/partials/custom-head.html. This will be automatically included in the generated HTML
-  1. Any referenced files specified in layouts/partials/custom-head.html should be included in the static directory
-  1. An example is the inclusion of the static/css/redcross-custom.css. This example includes css that changes the default color of the docDock theme header
-* Substantial changes to the presentation may require more extensive changes to the supplied CSS than is easily accommodated with this mechanism. The DocDock documentation references supplying a replacement "theme.css" but this documentation is apparently out-of-date or incorrect.
-=======
+*********
+Heading 2
+*********
+
+Heading 3
+=========
+
+Heading 4
+---------
+
+Heading 5
+^^^^^^^^^
+
+```
+
+### Environment
+
+_(on OSX)_
+
+```bash
+# install git lfs  
+# https://git-lfs.github.com/
+brew install git-lfs
+git lfs install
+# install python
+brew install python3
+# install virtualenv
+pip install virtualenv
+# create Python environment
+virtualenv -p /usr/local/bin/python3 venv
+# open the Python environment
+source venv/bin/activate
+# install requirements
+pip install -r requirements.txt
+```
+
+More on [`virtualenv`](https://virtualenv.pypa.io/en/stable/).
+
+Use [`sphinx-autobuild`](https://github.com/GaretJax/sphinx-autobuild) to automatically watch for changes and rebuild the html site using:
+```
+make livehtml
+```
+
+To stop the server press `Ctrl+C`.
+
+### Travis-CI
+
+You'll need to [install](https://github.com/travis-ci/travis.rb#installation).
+Check out the Travis-CI docs for [Building a Python Project](https://docs.travis-ci.com/user/languages/python/) and [GitHub Pages Deployment](https://docs.travis-ci.com/user/deployment/pages/). Personal access token with 'public_repo - Access public repositories' permissions created and used it in `travis encrypt GH_TOKEN=my_github_token --add env.matrix` as described in the [Travis-CI docs](https://docs.travis-ci.com/user/environment-variables#Encrypting-environment-variables).
