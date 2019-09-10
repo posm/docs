@@ -1,0 +1,18 @@
+language: python
+python:
+- '3.6'
+env:
+  matrix:
+    secure: VawWifaCryxCdnPBTihZvVlQFHlQ/+sUcuOn/tqSBowHj83Gp50M4Z7WvL8sFZdYpeYqgzJFvabKrSS+aPKs6sqZzCrKCRixVaJKu00nzdJS+Lm8cWU+QCIXoZuhe7F7tIIV97JW10rIM3JGSZDGwb32YOEqUDgMMH2huRgAZAsWGmps4a9lKKZCS+K8MWITCIEVT/fyt9neX5mVyc9ew1hbG5V/iE+p8uPqme9UuuicS6cJPXoEIMWvXoiXhbkuA2Fz7seJx0beFIX3kSAyjwdFapa46dMxRjPFt3Bq/RYipYs7No70RB07naU+AHsvdIqH1/5ZtikbqzgeStfFDCUphmzU8lTs28AUXZhyHbOya6UnVrl3/XotmT3bIc9cesu/o09LJIjASq1lCXuA3s/wir/yJ/4nWVGp/QEM/flRlrliIn7dlvHH48RTz/u73bWs4wwCiDp4uJ+l/rEb81eSwmblcm+N18pzUq4UHSD6SCZYGYLdMpZPCbmRUClZ5Q/jgwMK2P98VRmQ3n6vdVEBic2i2ye+dLx5tmWQh7zcejPa4pTzR6y2wpNZzw6fgdHEHPwej8w1CMaG7JgVU1annPz0ixCJPY84jpj1dar36l6KFq4b+Bb0gAnuhZR2ETOm8aoaZGaGjb0CnhodcwAsIGenkNRHZbb1l08mf2o=
+install:
+- pip install -r requirements.txt
+script:
+- make deploy
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: "$GH_TOKEN"
+  keep-history: false
+  on:
+    branch: publish
+  local_dir: _build/dirhtml
