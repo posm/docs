@@ -14,39 +14,33 @@ Get a Fully Qualified Domain Name
 
 Before installation, you should choose a domain name and host to use to access your new POSM and configure it with your DNS provider. If you don't do this, you won't be able to access the OpenStreetMap interface.
 
-Create the subdomain `osm.example.org`. You'll configure the DNS later.
-
 **************
 Instance Setup
 **************
 
-The first thing you will need to do is start a new instance. In your AWS EC2 Dashboard click on Launch instance. Scroll all the way down and find Ubuntu 14.04 LTS. The posm-build process only works on Ubuntu 14.04 at this time.
+The first thing you will need to do is start a new instance. In your AWS EC2 Dashboard click on Launch instance. Scroll all the way down and find Ubuntu 18.04 LTS. The posm-build process only works on Ubuntu 18.04 at this time.
 
 .. image:: /img/posm/cloud/ec2-ami.png
 
 
-After selecting your instance type you'll need to fill out a couple more things. Below are the recommended specs.
+After selecting your instance type you'll need to fill out a couple more things. Recommended specs for your instance are:
 
-.. image:: /img/posm/cloud/ec2-instance-type.png
-
-Recommended specs for your instance are:
-
- * Ubuntu 14.04 ***mandatory***
+ * We've used a t2.large
  * At least 2GB RAM, 8GB+ preferred
-     * If you use less than 8GB, you will not be able to run the OSM part of POSM. OpenMapKit Server runs happily on 2GB.
+     * If you use less than 8GB, you will not be able to run the OSM part of POSM
+     * OpenMapKit Server runs happily on 2GB
      * If using SuperPOSM (OpenDroneMap), the more RAM the better
  * At least 10GB of attached storage
      * Not an issue unless you have lots of photos or will be processing OpenDroneMap images
  * Open ports 22 and 80
      * 22 is needed to SSH into the server for administration and setup
      * 80 is needed to view the various resources
- * Our internal instance runs on a t2.large
 
 *************
 Configure DNS
 *************
 
-After the instance is created, also create an elastic IP and assign it to the instance you just created. AWS has a `great guide <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html#working-with-eips>`_ for this.
+After the instance is created, also create an elastic IP and assign it to the instance you just created. AWS has a `guide <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html#working-with-eips>`_ for this.
 
 Now configure the DNS. Create an @ record and point it to the IP address that you just created and assigned to your instance.
 

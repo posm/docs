@@ -32,10 +32,6 @@ Heading 5
 _(on OSX)_
 
 ```bash
-# install git lfs  
-# https://git-lfs.github.com/
-brew install git-lfs
-git lfs install
 # install python
 brew install python3
 # install virtualenv
@@ -61,5 +57,5 @@ Run `make deploy` to test for errors before pushing to production (any warnings 
 
 ### Travis-CI
 
-You'll need to [install](https://github.com/travis-ci/travis.rb#installation).
+You don't need to do anything with this if contributing. But if you want to fork this site for your own needs, you'll need to [install](https://github.com/travis-ci/travis.rb#installation).
 Check out the Travis-CI docs for [Building a Python Project](https://docs.travis-ci.com/user/languages/python/) and [GitHub Pages Deployment](https://docs.travis-ci.com/user/deployment/pages/). Personal access token with 'public_repo - Access public repositories' permissions created and used it in `travis encrypt GH_TOKEN=my_github_token --add env.matrix` as described in the [Travis-CI docs](https://docs.travis-ci.com/user/environment-variables#Encrypting-environment-variables).
