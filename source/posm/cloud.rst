@@ -49,7 +49,7 @@ Sample DNS records:
 .. code-block:: text
 
   my-posm.example.org     A     1.2.3.4
-  osm.my-posm.example.org CNAME posm.example.org
+  osm.my-posm.example.org CNAME my-posm.example.org
 
 
 ******************
