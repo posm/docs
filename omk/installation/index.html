@@ -1,0 +1,363 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Installation &mdash; field tech 0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Creating a survey form" href="../survey-form/" />
+    <link rel="prev" title="Overview" href="../intro/" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../" class="icon icon-home"> field tech
+          
+
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../getting-started/">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../principles/">Humanitarian principles</a></li>
+</ul>
+<p class="caption"><span class="caption-text">ODK</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../odk/intro/">Open Data Kit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../odk/media/">ODK in the RCRC network</a></li>
+</ul>
+<p class="caption"><span class="caption-text">ODK2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../odk2/intro/">Open Data Kit 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../odk2/rc2relief/">RC2 Relief Tool</a></li>
+</ul>
+<p class="caption"><span class="caption-text">POSM</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../posm/intro/">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../posm/setup/">Getting a POSM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../posm/offline-mapping/">Offline OSM mapping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../posm/passel/">OpenDroneMap distributed processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../posm/troubleshooting/">General troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../posm/cloud/">Cloud Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../posm/for-developers/">For Developers</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OpenMapKit</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/">Overview</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#odk-collect">ODK Collect</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#openmapkit">OpenMapKit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#openmapkit-server">OpenMapKit Server</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#tested-on">Tested On</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#steps">Steps</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#upstart">Upstart</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#your-data">Your Data</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../survey-form/">Creating a survey form</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../osm-basemap/">Creating the OSM basemap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../walkthrough/">Walkthrough</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Street-level imagery</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../street-level/intro/">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../street-level/sony-action-cam/">Sony action cameras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../street-level/mapillary/">Mapillary</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Drones</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../drones/intro/">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../drones/processing/">Imagery processing</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Use cases</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../use-cases/intro/">Introduction</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">field tech</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../">Docs</a> &raquo;</li>
+        
+      <li>Installation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/omk/installation.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<p class="last">Need to revise and add more details to this section.</p>
+</div>
+<div class="section" id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+<p>You’ll need the latest version of both ODK Collect and OpenMapKit on your Android device. OpenMapKit currently supports Android version 4.2 and higher. You will also need install OpenMapKit Server in order manage surveys and OSM data, deploy them to your Android devices and submit surveys back to OSM.</p>
+<div class="section" id="odk-collect">
+<h3>ODK Collect<a class="headerlink" href="#odk-collect" title="Permalink to this headline">¶</a></h3>
+<p>You can either download ODK Collect on the <a class="reference external" href="https://play.google.com/store/apps/details?id=org.odk.collect.android">Google Play Store</a> or directly download the <a class="reference external" href="https://opendatakit.org/downloads/download-category/collect/">APK</a>.</p>
+</div>
+<div class="section" id="openmapkit">
+<h3>OpenMapKit<a class="headerlink" href="#openmapkit" title="Permalink to this headline">¶</a></h3>
+<p>Once ODK Collect is installed download OpenMapKit from the <a class="reference external" href="https://play.google.com/store/apps/details?id=org.odk.collect.android">Google Play Store</a> or <a class="reference external" href="https://github.com/AmericanRedCross/OpenMapKitAndroid/releases">get the APK</a>.</p>
+</div>
+<div class="section" id="openmapkit-server">
+<h3>OpenMapKit Server<a class="headerlink" href="#openmapkit-server" title="Permalink to this headline">¶</a></h3>
+<p>Once ODK Collect and OpenMapKit are on your Android device, install OpenMapKit Server on an environment of your choosing.</p>
+<p>For an actual deployment of OpenMapKit Server, it is recommended to use
+<a class="reference external" href="https://github.com/AmericanRedCross/posm-build">posm-build</a> to install your
+instance. posm-build is a lightweight shell build system used for POSM servers.
+OpenMapKit Server is designed to be a part of a POSM server, however, the
+posm-build allows you to be modular regarding what gets installed, so you can
+and should use it if you want to install a standalone OpenMapKit Server.</p>
+<p>The advantage is that in a few lines, you can have OpenMapKit Server installed
+and integrated as an Upstart service in Ubuntu Linux. This means that if
+OpenMapKit Server crashes or is restarted, the API will restart automatically.
+Also, posm-build only gets the dependencies you need and downloads only the
+files you need, so the entire repo does not need to be cloned with git.</p>
+<div class="admonition-todo admonition" id="index-1">
+<p class="first admonition-title">Todo</p>
+<p class="last">All of these install instructions need to be updated.</p>
+</div>
+<p>Instructions for <a class="reference external" href="https://github.com/AmericanRedCross/OpenMapKitServer/blob/master/docs/development-installation.md">installing OpenMapKit Server</a> on your development environment.</p>
+<div class="section" id="tested-on">
+<h4>Tested On<a class="headerlink" href="#tested-on" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt>Amazon EC2 Ubuntu Server 14.04 LTS</dt>
+<dd><ul class="first last">
+<li>Instance Type: t2.nano</li>
+<li>vCPUs: 1</li>
+<li>Memory: 500 MB</li>
+<li>Storage: 8 GB</li>
+<li>Open Ports: 22, 80, 3210</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>OpenMapKit Server is intended to be as light-weight as possible, so you don’t
+have to throw much hardware at it.</p>
+</div>
+<div class="section" id="steps">
+<h4>Steps<a class="headerlink" href="#steps" title="Permalink to this headline">¶</a></h4>
+<ol class="arabic simple">
+<li>Download and extract posm-build.</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo -s
+wget -q -O - https://github.com/AmericanRedCross/posm-build/archive/master.tar.gz <span class="p">|</span> tar -zxf - -C /root --strip<span class="o">=</span><span class="m">2</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>Create a <cite>settings.local</cite> file in <cite>/root/etc</cite> with the following content:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span> <span class="nv">posm_ip</span><span class="o">=</span><span class="s2">&quot;54.191.109.128&quot;</span>
+
+Replace the IP address <span class="k">for</span> <span class="sb">`</span>posm_ip<span class="sb">`</span> with the actual public IP or your server. If you are on Amazon, this should be your Elastic IP.
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Execute <cite>bootstrap.sh</cite> and tell it to only install NGINX and OpenMapKit Server.</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>/root/scripts/bootstrap.sh base virt nodejs nginx omk
+</pre></div>
+</div>
+<p>Let the installation churn. That’s it!</p>
+</div>
+<div class="section" id="upstart">
+<h4>Upstart<a class="headerlink" href="#upstart" title="Permalink to this headline">¶</a></h4>
+<p>You can start / stop / restart the <cite>omk-service</cite> like any Ubuntu Upstart service.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo service omk-server stop
+sudo service omk-server start
+sudo service omk-server restart
+</pre></div>
+</div>
+</div>
+<div class="section" id="your-data">
+<h4>Your Data<a class="headerlink" href="#your-data" title="Permalink to this headline">¶</a></h4>
+<p>All of your data are stored in <cite>/opt/omk/OpenMapKitServer/public</cite>.</p>
+<p>You can scp / sftp the</p>
+<p>forms <cite>/opt/omk/OpenMapKitServer/public/forms</cite></p>
+<p>deployments <cite>/opt/omk/OpenMapKitServer/public/deployments</cite></p>
+<p>submissions <cite>/opt/omk/OpenMapKitServer/public/submissions</cite></p>
+<p>from the server to backup and access your data. There is no database, so all of your data are in these files.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../survey-form/" class="btn btn-neutral float-right" title="Creating a survey form" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../intro/" class="btn btn-neutral" title="Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright  CC-BY American Red Cross
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,706 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Walkthrough &mdash; field tech 0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Overview" href="../../street-level/intro/" />
+    <link rel="prev" title="Creating the OSM basemap" href="../osm-basemap/" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../" class="icon icon-home"> field tech
+          
+
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../getting-started/">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../principles/">Humanitarian principles</a></li>
+</ul>
+<p class="caption"><span class="caption-text">ODK</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../odk/intro/">Open Data Kit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../odk/media/">ODK in the RCRC network</a></li>
+</ul>
+<p class="caption"><span class="caption-text">ODK2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../odk2/intro/">Open Data Kit 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../odk2/rc2relief/">RC2 Relief Tool</a></li>
+</ul>
+<p class="caption"><span class="caption-text">POSM</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../posm/intro/">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../posm/setup/">Getting a POSM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../posm/offline-mapping/">Offline OSM mapping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../posm/passel/">OpenDroneMap distributed processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../posm/troubleshooting/">General troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../posm/cloud/">Cloud Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../posm/for-developers/">For Developers</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OpenMapKit</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../survey-form/">Creating a survey form</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../osm-basemap/">Creating the OSM basemap</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Walkthrough</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#openmapkit-server-production-installation">OpenMapKit Server Production Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#tested-on">Tested On</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#steps">Steps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#upstart">Upstart</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#your-data">Your Data</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#creating-and-add-a-survey">Creating and add a survey</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#create-or-modify-xlsform-using-excel">Create or Modify XLSForm using Excel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#upload-survey-to-openmapkit-server">Upload Survey to OpenMapKit Server</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#hot-export-tool-osm-basemap-data">HOT Export Tool - OSM Basemap &amp; Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#posm-area-of-interest-deployment">POSM Area of Interest Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#field-papers-openmapkit-atlas-deployment">Field Papers → OpenMapKit Atlas Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#openmapkit-android-download-deployment">OpenMapKit Android - Download Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#collect-data-using-surveys">Collect Data Using Surveys</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#start-blank-form-in-odk-collect">Start Blank form in ODK Collect</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#continue-form-in-openmapkit-android">Continue Form in OpenMapKit Android</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#complete-form-in-odk-collect-app">Complete Form in ODK Collect App</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#upload-form-data-in-odk-collect-app">Upload Form Data in ODK Collect App</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#view-form-data-on-openmapkit-server">View Form Data on OpenMapKit Server</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#see-your-odk-osm-submissions">See your ODK &amp; OSM submissions:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#resolve-conflicts-with-the-posm-changeset-replay-tool">Resolve Conflicts with the POSM Changeset Replay Tool</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#obtain-aoi-extract-at-branch-point">1. Obtain AOI Extract at Branch Point</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gather-local-changesets">2. Gather Local Changesets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#initialize-the-git-repository-from-the-branch-point">3. Initialize the git Repository from the Branch Point</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#obtain-a-current-aoi-extract">4. Obtain a Current AOI Extract</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#extract-and-apply-upstream-changes">5. Extract and Apply Upstream Changes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#apply-local-changesets-to-the-branch-point">6. Apply Local Changesets to the Branch Point</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#apply-local-changesets-to-the-upstream-version-and-resolve-conflicts">7-8. Apply Local Changesets to the Upstream Version and Resolve Conflicts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#submit-resolved-changesets-upstream">9. Submit Resolved Changesets Upstream</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Street-level imagery</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../street-level/intro/">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../street-level/sony-action-cam/">Sony action cameras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../street-level/mapillary/">Mapillary</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Drones</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../drones/intro/">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../drones/processing/">Imagery processing</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Use cases</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../use-cases/intro/">Introduction</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">field tech</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../">Docs</a> &raquo;</li>
+        
+      <li>Walkthrough</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/omk/walkthrough.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="walkthrough">
+<h1>Walkthrough<a class="headerlink" href="#walkthrough" title="Permalink to this headline">¶</a></h1>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<p class="last">Need to revise and add more details to this section.</p>
+</div>
+<p>This walkthrough is intended to take you through the entire process of setting up and using OpenMapKit from start to finish.</p>
+<p>The overview of the process is:</p>
+<div class="admonition-todo admonition" id="index-1">
+<p class="first admonition-title">Todo</p>
+<p class="last">This list should link to the sections further down the page. Numbers and title should be consistent.</p>
+</div>
+<ol class="arabic simple">
+<li>Build OpenMapKit Server</li>
+<li>Create and add a survey</li>
+<li>Use HOT Export Tool to get OSM Data - basemap &amp; vector data (POSM Bundle)</li>
+<li>Deploy POSM Area of Interest with POSM Bundle</li>
+<li>Deploy Field Papers</li>
+<li>Deploy on Android</li>
+<li>View &amp; Download Survey Data</li>
+<li>Submit to OSM API</li>
+</ol>
+<div class="section" id="openmapkit-server-production-installation">
+<h2>OpenMapKit Server Production Installation<a class="headerlink" href="#openmapkit-server-production-installation" title="Permalink to this headline">¶</a></h2>
+<p>For an actual deployment of OpenMapKit Server, it is recommended to use
+<a class="reference external" href="https://github.com/AmericanRedCross/posm-build)">posm-build</a> to install your
+instance. posm-build is a lightweight shell build system used for POSM servers.
+OpenMapKit Server is designed to be a part of a POSM server, however, the
+posm-build allows you to be modular regarding what gets installed, so you can
+and should use it if you want to install a standalone OpenMapKit Server.</p>
+<p>The advantage is that in a few lines, you can have OpenMapKit Server installed
+and integrated as an Upstart service in Ubuntu Linux. This means that if
+OpenMapKit Server crashes or is restarted, the API will restart automatically.
+Also, posm-build only gets the dependencies you need and downloads only the
+files you need, so the entire repo does not need to be cloned with git.</p>
+<p>Instructions for <a class="reference external" href="https://github.com/AmericanRedCross/OpenMapKitServer/blob/master/docs/development-installation.md">installing OpenMapKit Server</a> on your development environment.</p>
+<div class="section" id="tested-on">
+<h3>Tested On<a class="headerlink" href="#tested-on" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt>Amazon EC2 Ubuntu Server 14.04 LTS</dt>
+<dd><ul class="first last">
+<li>Instance Type: t2.nano</li>
+<li>vCPUs: 1</li>
+<li>Memory: 500 MB</li>
+<li>Storage: 8 GB</li>
+<li>Open Ports: 22, 80, 3210</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>OpenMapKit Server is intended to be as light-weight as possible, so you don’t
+have to throw much hardware at it.</p>
+</div>
+<div class="section" id="steps">
+<h3>Steps<a class="headerlink" href="#steps" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>Download and extract posm-build.</li>
+</ol>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>sudo -s
+wget -q -O - https://github.com/AmericanRedCross/posm-build/archive/master.tar.gz | tar -zxf - -C /root --strip=2
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>Create a <cite>settings.local</cite> file in <cite>/root/etc</cite> with the following content:</li>
+</ol>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span> posm_ip=&quot;54.191.109.128&quot;
+
+
+Replace the IP address for `posm_ip` with the actual public IP or your server. If you are on Amazon, this should be your Elastic IP.
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Execute <cite>bootstrap.sh</cite> and tell it to only install NGINX and OpenMapKit Server.</li>
+</ol>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>/root/scripts/bootstrap.sh base virt nodejs nginx omk
+</pre></div>
+</div>
+<p>Let the installation churn. That’s it!</p>
+</div>
+<div class="section" id="upstart">
+<h3>Upstart<a class="headerlink" href="#upstart" title="Permalink to this headline">¶</a></h3>
+<p>You can start / stop / restart the <cite>omk-service</cite> like any Ubuntu Upstart service.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>sudo service omk-server stop
+sudo service omk-server start
+sudo service omk-server restart
+</pre></div>
+</div>
+</div>
+<div class="section" id="your-data">
+<h3>Your Data<a class="headerlink" href="#your-data" title="Permalink to this headline">¶</a></h3>
+<p>All of your data are stored in <code class="docutils literal notranslate"><span class="pre">/opt/omk/OpenMapKitServer/public</span></code>.</p>
+<p>You can scp / sftp the</p>
+<p>forms <code class="docutils literal notranslate"><span class="pre">/opt/omk/OpenMapKitServer/public/forms</span></code></p>
+<p>deployments <code class="docutils literal notranslate"><span class="pre">/opt/omk/OpenMapKitServer/public/deployments</span></code></p>
+<p>submissions <code class="docutils literal notranslate"><span class="pre">/opt/omk/OpenMapKitServer/public/submissions</span></code></p>
+<p>from the server to backup and access your data. There is no database, so all of your data are in these files.</p>
+</div>
+</div>
+<div class="section" id="creating-and-add-a-survey">
+<h2>Creating and add a survey<a class="headerlink" href="#creating-and-add-a-survey" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="create-or-modify-xlsform-using-excel">
+<h3>Create or Modify XLSForm using Excel<a class="headerlink" href="#create-or-modify-xlsform-using-excel" title="Permalink to this headline">¶</a></h3>
+<p>Creating forms for ODK or OMK can be as simple or complex as the survey itself. In most cases this step can be completed in under an hour.</p>
+<p>Setting up the basic survey form:</p>
+<img alt="../../_images/walkthrough-1.png" src="../../_images/walkthrough-1.png" />
+<p>Creating a drop down list of surveyor names:</p>
+<img alt="../../_images/walkthrough-2.png" src="../../_images/walkthrough-2.png" />
+<p>Creating survey questions consistent with Open Street Map tags:</p>
+<img alt="../../_images/walkthrough-3.png" src="../../_images/walkthrough-3.png" />
+<p>A <a class="reference external" href="https://docs.google.com/spreadsheets/d/11H4-mGYTS61GLjSbVoTbmhoI5DjlF5fcBwNwQcvd2Go/edit#gid=0">similar example</a> can be viewed and downloaded.</p>
+<p>More detailed documentation for how to correctly create a survey form can be found in the Creating a surveys form section of the documentation.</p>
+</div>
+<div class="section" id="upload-survey-to-openmapkit-server">
+<h3>Upload Survey to OpenMapKit Server<a class="headerlink" href="#upload-survey-to-openmapkit-server" title="Permalink to this headline">¶</a></h3>
+<p>To use the survey you create in the field, it must be added to OpenMapKit Server. You can upload forms by using the API call</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>http://{your_host_url}/pages/upload-form/
+</pre></div>
+</div>
+<p>OR</p>
+<p>By opening OpenMapKit Server UI.</p>
+<p>You will see all the forms currently on your server</p>
+<img alt="../../_images/omkserver1.png" src="../../_images/omkserver1.png" />
+<p><em>OpenMapKit Server Forms</em></p>
+<p>Clicking in the upper right corner will give you a drop down menu, click <strong>Upload Form</strong> to upload your survey.</p>
+<img alt="../../_images/omkserver2.png" src="../../_images/omkserver2.png" />
+<p><em>Upload Form</em></p>
+<p>You can drag-n-drop your form or click to select it. Then hit <strong>Submit</strong> to add your survey to your OpenMapKit Server.</p>
+</div>
+</div>
+<div class="section" id="hot-export-tool-osm-basemap-data">
+<h2>HOT Export Tool - OSM Basemap &amp; Data<a class="headerlink" href="#hot-export-tool-osm-basemap-data" title="Permalink to this headline">¶</a></h2>
+<p>The HOT Export Tool is used to get the larger Area of Interest data from OpenStreetMap onto the POSM. The two main components that it packages for you are 1) OSM PBF, the vector data,  and 2) MBTiles, basemap tiles.</p>
+<p>POSM itself generates tiles, called <code class="docutils literal notranslate"><span class="pre">POSM</span> <span class="pre">Carto</span></code> on the device itself, but it is often useful to have the HOT Export Tool fetch tiles for you on the internet as well–especially if you want to have a satellite basemap.</p>
+<p>Currently, the HOT Export Tool can be reached at:</p>
+<p><a class="reference external" href="https://export.hotosm.org/en/v3/">https://export.hotosm.org/en/v3/</a></p>
+<p>Name and describe your export. On the right, make sure you have selected <strong>Select Export Area</strong>, and draw a bounding box to server as your Area of Interest.</p>
+<img alt="../../_images/a-hot11.png" src="../../_images/a-hot11.png" />
+<p><em>Describe an Export</em></p>
+<p>Choose the file formats you want. You want to at least have OSM PBF. OSMAnd OBF is a bonus, because you can load your extract in OSMAnd. If you want the export tool to generate an MBTiles basemap from the internet, check <strong>MBTiles</strong>.</p>
+<img alt="../../_images/a-hot21.png" src="../../_images/a-hot21.png" />
+<p><em>File Formats</em></p>
+<p>If you would like to have an MBTiles basemap fetched from the internet <strong>(optional)</strong>, you need to specify the tile template URL and zoom levels to be fetched. This task by far takes the longest, and the generated MBTiles file can be <strong>huge</strong>… You can use <a class="reference external" href="http://tools.geofabrik.de/calc/">Geofabrik’s Tile Calculator</a> to help you determine how big your MBTiles is likely to be.</p>
+<img alt="../../_images/a-hot31.png" src="../../_images/a-hot31.png" />
+<p><em>MBTiles Source URL</em></p>
+<p>Finally, you need to <strong>Create Export</strong>.</p>
+<img alt="../../_images/a-hot41.png" src="../../_images/a-hot41.png" />
+<p><em>Export Details</em></p>
+<p>The export begins by fetching OSM data from the Overpass API. This may take a while, and if you are creating  MBTiles, it may even take hours. You will be emailed when the export is complete.</p>
+<img alt="../../_images/a-hot51.png" src="../../_images/a-hot51.png" />
+<p><em>Beginning of Export</em></p>
+<p>Once your export is completed, right click on <strong>POSM Bundle</strong> and copy the URL.</p>
+<img alt="../../_images/a-hot61.png" src="../../_images/a-hot61.png" />
+<p><em>Completed Export</em></p>
+</div>
+<div class="section" id="posm-area-of-interest-deployment">
+<h2>POSM Area of Interest Deployment<a class="headerlink" href="#posm-area-of-interest-deployment" title="Permalink to this headline">¶</a></h2>
+<p>The POSM needs to fetch the data generated by the HOT Export tool, load it’s databases, and setup it’s applications for the Area of Interest.</p>
+<p>Make sure you are connected to the <code class="docutils literal notranslate"><span class="pre">POSM</span></code> wifi network. Then, connect to the POSM by going to:</p>
+<p><a class="reference external" href="http://posm.io">http://posm.io</a></p>
+<p>go to <strong>POSM ADMIN</strong>.</p>
+<p>Paste the <strong>POSM Bundle</strong> url in the text area and <strong>START</strong>.</p>
+<img alt="../../_images/b-aoi1.png" src="../../_images/b-aoi1.png" />
+<p><em>Enter URL</em></p>
+<p>When the POSM Area of Interest (AOI) Deployment is complete, you will see a check box next to the task, and the console output will say <code class="docutils literal notranslate"><span class="pre">==&gt;</span> <span class="pre">tessera-fp-reset.js:</span> <span class="pre">END</span> <span class="pre">false</span></code>. This means that it is finished.</p>
+<img alt="../../_images/b-aoi2.png" src="../../_images/b-aoi2.png" />
+<p><em>Completed AOI</em></p>
+<p>Now, let’s do a sanity check to see if the data has loaded correctly. Click on <strong>EDIT OPENSTREETMAP</strong> in the POSM Portal, or go to <a class="reference external" href="http://osm.posm.io">http://osm.posm.io</a></p>
+<p>It may take a little while to start cutting tiles, but zoom out and zoom into the area that you loaded. You should see tiles being drawn.</p>
+<img alt="../../_images/b-aoi3.png" src="../../_images/b-aoi3.png" />
+<p><em>POSM Carto Tiles in OpenStreetMap</em></p>
+<p>Also check Field Papers.</p>
+<img alt="../../_images/b-aoi4.png" src="../../_images/b-aoi4.png" />
+<p><em>Tiles in Field Papers</em></p>
+</div>
+<div class="section" id="field-papers-openmapkit-atlas-deployment">
+<h2>Field Papers → OpenMapKit Atlas Deployment<a class="headerlink" href="#field-papers-openmapkit-atlas-deployment" title="Permalink to this headline">¶</a></h2>
+<p>The deployments that you see in OpenMapKit are based off of the bounds of a Field Paper atlas. The entire Area of Interest is too large for the phone, so instead, our deployment is based off of a field paper atlas.</p>
+<p>When you create a field paper, an atlas is generated, and we are using it’s slug for the <strong>name</strong>, the <strong>title</strong> for the title you gave the field paper, and the <strong>GeoJSON</strong> for drawing the bounds of each field paper page in OpenMapKit.</p>
+<img alt="../../_images/fp.png" src="../../_images/fp.png" />
+<p><em>Components of an Atlas</em></p>
+<p>This step is soon to be automated, but now we manually enter the URL to the Atlas’s GeoJSON. This data encompasses the shapes that make up both the atlas as a whole as well as each page in the atlas. It also includes necessary metadata. We are using this data to generate a deployment for OpenMapKit. The name of the deployment is the <strong>slug</strong>, and the title is the title you gave the field paper.</p>
+<img alt="../../_images/c-deploy1.png" src="../../_images/c-deploy1.png" />
+<p><em>Pasting Atlas GeoJSON URL</em></p>
+<p>POSM is generating OSM XML from the API Database, POSM Carto MBTiles, and an extract of any other MBTiles included with the AOI.</p>
+<img alt="../../_images/c-deploy2.png" src="../../_images/c-deploy2.png" />
+<p><em>Generating Field Papers OpenMapKit Deployment</em></p>
+<p>When the deployment is complete, you should see <code class="docutils literal notranslate"><span class="pre">==&gt;</span> <span class="pre">gis_omk-posm-mbtiles.sh:</span> <span class="pre">END</span> <span class="pre">false</span></code>.</p>
+<img alt="../../_images/c-deploy3.png" src="../../_images/c-deploy3.png" />
+<p><em>End of Script</em></p>
+<p>You should also have all of the steps checked off.</p>
+<img alt="../../_images/c-deploy4.png" src="../../_images/c-deploy4.png" />
+<p><em>Deployment Complete</em></p>
+</div>
+<div class="section" id="openmapkit-android-download-deployment">
+<h2>OpenMapKit Android - Download Deployment<a class="headerlink" href="#openmapkit-android-download-deployment" title="Permalink to this headline">¶</a></h2>
+<p>Now you are read to download a deployment on your phone. You can enter the server URL to your POSM, but scanning the QR Code on a field paper will also switch you to the correct URL of the POSM server. You can also manually enter the POSM Server’s URL. It is <a class="reference external" href="http://posm.io">http://posm.io</a></p>
+<p>Make sure your phone is connected to the <strong>POSM</strong> wifi network.</p>
+<a class="reference internal image-reference" href="../../_images/d-android1.png"><img alt="../../_images/d-android1.png" src="../../_images/d-android1.png" style="width: 300px;" /></a>
+<p><em>No Server Setup Yet</em></p>
+<p>The QR Code will be read, and it will bring you to the corresponding deployment.</p>
+<a class="reference internal image-reference" href="../../_images/d-android2.png"><img alt="../../_images/d-android2.png" src="../../_images/d-android2.png" style="width: 300px;" /></a>
+<p><em>Deployment Details</em></p>
+<p>Now you can download it by pressing the button in the lower right.</p>
+<a class="reference internal image-reference" href="../../_images/d-android3.png"><img alt="../../_images/d-android3.png" src="../../_images/d-android3.png" style="width: 300px;" /></a>
+<p><em>Downloading</em></p>
+<p>If you jump back to the previous screen, you can see the list of deployments on the POSM’s OpenMapKit Server.</p>
+<a class="reference internal image-reference" href="../../_images/d-android4.png"><img alt="../../_images/d-android4.png" src="../../_images/d-android4.png" style="width: 300px;" /></a>
+<p><em>List of Deployments</em></p>
+<p>Once your download is complete, there will be a new button in the bottom left to <strong>Check Out</strong> your deployment. This will turn on the POSM Carto MBTiles and OSM XML on the map for you.</p>
+<a class="reference internal image-reference" href="../../_images/d-android5.png"><img alt="../../_images/d-android5.png" src="../../_images/d-android5.png" style="width: 300px;" /></a>
+<p><em>Download Complete</em></p>
+<p>You should also see the bounds of your field paper atlas pages. The top of the map should show the page that is green below.</p>
+<a class="reference internal image-reference" href="../../_images/d-android6.png"><img alt="../../_images/d-android6.png" src="../../_images/d-android6.png" style="width: 300px;" /></a>
+<p><em>Field Paper with Pages</em></p>
+<p>Also…</p>
+<p>Before, you always had to start with ODK Collect. Now, if you start from OpenMapKit and try to edit a feature, the app will lead you back to ODK Collect to fill in your survey.</p>
+<a class="reference internal image-reference" href="../../_images/d-android7.png"><img alt="../../_images/d-android7.png" src="../../_images/d-android7.png" style="width: 300px;" /></a>
+<p><em>Notice to Launch ODK Collect</em></p>
+<p>Once you’ve gotten back into OpenMapKit _from_ ODK Collect, you can edit tags as usual.</p>
+<a class="reference internal image-reference" href="../../_images/d-android8.png"><img alt="../../_images/d-android8.png" src="../../_images/d-android8.png" style="width: 300px;" /></a>
+</div>
+<div class="section" id="collect-data-using-surveys">
+<h2>Collect Data Using Surveys<a class="headerlink" href="#collect-data-using-surveys" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="start-blank-form-in-odk-collect">
+<h3>Start Blank form in ODK Collect<a class="headerlink" href="#start-blank-form-in-odk-collect" title="Permalink to this headline">¶</a></h3>
+<div class="admonition-todo admonition" id="index-2">
+<p class="first admonition-title">Todo</p>
+<p class="last">Put these images in this project repository (not externally linked) and update as needed.</p>
+</div>
+<a class="reference internal image-reference" href="https://cloud.githubusercontent.com/assets/506078/7143725/e08011e8-e295-11e4-8df4-53db84657b5c.png"><img alt="https://cloud.githubusercontent.com/assets/506078/7143725/e08011e8-e295-11e4-8df4-53db84657b5c.png" src="https://cloud.githubusercontent.com/assets/506078/7143725/e08011e8-e295-11e4-8df4-53db84657b5c.png" style="width: 300px;" /></a>
+<a class="reference internal image-reference" href="https://cloud.githubusercontent.com/assets/506078/7143746/e10a4426-e295-11e4-857f-932854bfd6b1.png"><img alt="https://cloud.githubusercontent.com/assets/506078/7143746/e10a4426-e295-11e4-857f-932854bfd6b1.png" src="https://cloud.githubusercontent.com/assets/506078/7143746/e10a4426-e295-11e4-857f-932854bfd6b1.png" style="width: 300px;" /></a>
+<a class="reference internal image-reference" href="https://cloud.githubusercontent.com/assets/506078/7143734/e09dfb36-e295-11e4-85b5-c6f7d9107b3c.png"><img alt="https://cloud.githubusercontent.com/assets/506078/7143734/e09dfb36-e295-11e4-85b5-c6f7d9107b3c.png" src="https://cloud.githubusercontent.com/assets/506078/7143734/e09dfb36-e295-11e4-85b5-c6f7d9107b3c.png" style="width: 300px;" /></a>
+<a class="reference internal image-reference" href="https://cloud.githubusercontent.com/assets/506078/7143735/e0ab1320-e295-11e4-970a-2098b7d98b3c.png"><img alt="https://cloud.githubusercontent.com/assets/506078/7143735/e0ab1320-e295-11e4-970a-2098b7d98b3c.png" src="https://cloud.githubusercontent.com/assets/506078/7143735/e0ab1320-e295-11e4-970a-2098b7d98b3c.png" style="width: 300px;" /></a>
+<a class="reference internal image-reference" href="https://cloud.githubusercontent.com/assets/506078/7143736/e0ab7f90-e295-11e4-9835-6eedc6beda0e.png"><img alt="https://cloud.githubusercontent.com/assets/506078/7143736/e0ab7f90-e295-11e4-9835-6eedc6beda0e.png" src="https://cloud.githubusercontent.com/assets/506078/7143736/e0ab7f90-e295-11e4-9835-6eedc6beda0e.png" style="width: 300px;" /></a>
+<a class="reference internal image-reference" href="https://cloud.githubusercontent.com/assets/506078/7143737/e0ae9540-e295-11e4-8b4a-2a44d0e58618.png"><img alt="https://cloud.githubusercontent.com/assets/506078/7143737/e0ae9540-e295-11e4-8b4a-2a44d0e58618.png" src="https://cloud.githubusercontent.com/assets/506078/7143737/e0ae9540-e295-11e4-8b4a-2a44d0e58618.png" style="width: 300px;" /></a>
+</div>
+<div class="section" id="continue-form-in-openmapkit-android">
+<h3>Continue Form in OpenMapKit Android<a class="headerlink" href="#continue-form-in-openmapkit-android" title="Permalink to this headline">¶</a></h3>
+<a class="reference internal image-reference" href="https://cloud.githubusercontent.com/assets/506078/7143738/e0aff584-e295-11e4-9438-0490e06decfd.png"><img alt="https://cloud.githubusercontent.com/assets/506078/7143738/e0aff584-e295-11e4-9438-0490e06decfd.png" src="https://cloud.githubusercontent.com/assets/506078/7143738/e0aff584-e295-11e4-9438-0490e06decfd.png" style="width: 300px;" /></a>
+<a class="reference internal image-reference" href="https://cloud.githubusercontent.com/assets/506078/7143811/41619680-e296-11e4-94c7-6e6abbd6f1a9.png"><img alt="https://cloud.githubusercontent.com/assets/506078/7143811/41619680-e296-11e4-94c7-6e6abbd6f1a9.png" src="https://cloud.githubusercontent.com/assets/506078/7143811/41619680-e296-11e4-94c7-6e6abbd6f1a9.png" style="width: 300px;" /></a>
+<p>You can click on any feature on your map to edit it.</p>
+<a class="reference internal image-reference" href="https://cloud.githubusercontent.com/assets/506078/7143813/41672dac-e296-11e4-943c-a46cff5ec395.png"><img alt="https://cloud.githubusercontent.com/assets/506078/7143813/41672dac-e296-11e4-943c-a46cff5ec395.png" src="https://cloud.githubusercontent.com/assets/506078/7143813/41672dac-e296-11e4-943c-a46cff5ec395.png" style="width: 300px;" /></a>
+<a class="reference internal image-reference" href="https://cloud.githubusercontent.com/assets/506078/7143814/4167b812-e296-11e4-9301-52f662c61f94.png"><img alt="https://cloud.githubusercontent.com/assets/506078/7143814/4167b812-e296-11e4-9301-52f662c61f94.png" src="https://cloud.githubusercontent.com/assets/506078/7143814/4167b812-e296-11e4-9301-52f662c61f94.png" style="width: 300px;" /></a>
+<a class="reference internal image-reference" href="https://cloud.githubusercontent.com/assets/506078/7143816/416b2074-e296-11e4-9a77-87f3c998d6bc.png"><img alt="https://cloud.githubusercontent.com/assets/506078/7143816/416b2074-e296-11e4-9a77-87f3c998d6bc.png" src="https://cloud.githubusercontent.com/assets/506078/7143816/416b2074-e296-11e4-9a77-87f3c998d6bc.png" style="width: 300px;" /></a>
+<a class="reference internal image-reference" href="https://cloud.githubusercontent.com/assets/506078/7143818/41749b54-e296-11e4-80d3-9fd211ac7d3c.png"><img alt="https://cloud.githubusercontent.com/assets/506078/7143818/41749b54-e296-11e4-80d3-9fd211ac7d3c.png" src="https://cloud.githubusercontent.com/assets/506078/7143818/41749b54-e296-11e4-80d3-9fd211ac7d3c.png" style="width: 300px;" /></a>
+<a class="reference internal image-reference" href="https://cloud.githubusercontent.com/assets/506078/7143823/418bc694-e296-11e4-92c4-9acf989c95e9.png"><img alt="https://cloud.githubusercontent.com/assets/506078/7143823/418bc694-e296-11e4-92c4-9acf989c95e9.png" src="https://cloud.githubusercontent.com/assets/506078/7143823/418bc694-e296-11e4-92c4-9acf989c95e9.png" style="width: 300px;" /></a>
+</div>
+<div class="section" id="complete-form-in-odk-collect-app">
+<h3>Complete Form in ODK Collect App<a class="headerlink" href="#complete-form-in-odk-collect-app" title="Permalink to this headline">¶</a></h3>
+<a class="reference internal image-reference" href="https://cloud.githubusercontent.com/assets/506078/7143824/418dea64-e296-11e4-8939-3fc81b30facd.png"><img alt="https://cloud.githubusercontent.com/assets/506078/7143824/418dea64-e296-11e4-8939-3fc81b30facd.png" src="https://cloud.githubusercontent.com/assets/506078/7143824/418dea64-e296-11e4-8939-3fc81b30facd.png" style="width: 300px;" /></a>
+<a class="reference internal image-reference" href="https://cloud.githubusercontent.com/assets/506078/7143825/418fd0d6-e296-11e4-9e9e-1e9c4af0ac77.png"><img alt="https://cloud.githubusercontent.com/assets/506078/7143825/418fd0d6-e296-11e4-9e9e-1e9c4af0ac77.png" src="https://cloud.githubusercontent.com/assets/506078/7143825/418fd0d6-e296-11e4-9e9e-1e9c4af0ac77.png" style="width: 300px;" /></a>
+<p>Click on <strong>Send Finalized Form(s)</strong> to get to the upload dialogue.</p>
+</div>
+<div class="section" id="upload-form-data-in-odk-collect-app">
+<h3>Upload Form Data in ODK Collect App<a class="headerlink" href="#upload-form-data-in-odk-collect-app" title="Permalink to this headline">¶</a></h3>
+<a class="reference internal image-reference" href="https://cloud.githubusercontent.com/assets/506078/7143826/41946380-e296-11e4-9a4f-0c4ef0ed2e1e.png"><img alt="https://cloud.githubusercontent.com/assets/506078/7143826/41946380-e296-11e4-9a4f-0c4ef0ed2e1e.png" src="https://cloud.githubusercontent.com/assets/506078/7143826/41946380-e296-11e4-9a4f-0c4ef0ed2e1e.png" style="width: 300px;" /></a>
+<p>Select all the forms you want or click <strong>Toggle All</strong>. When you’re read click <strong>Send Selected</strong> to upload your completed data to the server.</p>
+</div>
+</div>
+<div class="section" id="view-form-data-on-openmapkit-server">
+<h2>View Form Data on OpenMapKit Server<a class="headerlink" href="#view-form-data-on-openmapkit-server" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="see-your-odk-osm-submissions">
+<h3>See your ODK &amp; OSM submissions:<a class="headerlink" href="#see-your-odk-osm-submissions" title="Permalink to this headline">¶</a></h3>
+<p>Submissions can be viewed, downloaded and submitted to OSM from OMK Server. To access submitted forms and data, first open the OMK Server UI.</p>
+<img alt="../../_images/omkserver1.png" src="../../_images/omkserver1.png" />
+<p><em>Forms</em></p>
+<p>Click on the the <strong>View Submissions</strong> tab of the survey you would like to view.</p>
+<img alt="../../_images/osm_submissions.png" src="../../_images/osm_submissions.png" />
+<p><em>View Submissions</em></p>
+<p>You have the options to view &amp; download the ODK data, view &amp; download the OSM data and the ability to submit the OSM data back to the OSM API.</p>
+<img alt="../../_images/osm_metadata.png" src="../../_images/osm_metadata.png" />
+<p><em>Survey Metadata</em></p>
+<p>If there are any conflicts that occur when submitting data back to the OSM API, the submission will fail. Conflicts will be flagged and have to be resolved manually using the <a class="reference external" href="https://github.com/AmericanRedCross/posm-replay-tool">POSM Changeset Replay Tool</a>.</p>
+</div>
+<div class="section" id="resolve-conflicts-with-the-posm-changeset-replay-tool">
+<h3>Resolve Conflicts with the POSM Changeset Replay Tool<a class="headerlink" href="#resolve-conflicts-with-the-posm-changeset-replay-tool" title="Permalink to this headline">¶</a></h3>
+<p>The Changeset Replay Tool is a workflow for resolving conflicts. It uses a local Git repository containing the current state (local edits), transform it so that it contains the new desired upstream state (what OSM should look like after merging), and apply the necessary transformations (in the form of API calls) to update the upstream state.</p>
+<div class="section" id="obtain-aoi-extract-at-branch-point">
+<h4>1. Obtain AOI Extract at Branch Point<a class="headerlink" href="#obtain-aoi-extract-at-branch-point" title="Permalink to this headline">¶</a></h4>
+<p>You should already have a copy of this file.</p>
+</div>
+<div class="section" id="gather-local-changesets">
+<h4>2. Gather Local Changesets<a class="headerlink" href="#gather-local-changesets" title="Permalink to this headline">¶</a></h4>
+<p>Determine the first local changeset. Assuming you have access to the local APIDB:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>psql -d osm_posm -t -c <span class="s2">&quot;select id from changesets where num_changes &gt; 0 order by id asc limit 1&quot;</span>
+</pre></div>
+</div>
+<p>Gather changesets from the local OSM API into <code class="docutils literal notranslate"><span class="pre">changesets/</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">OSM_BASE_URL</span><span class="o">=</span>http://localhost:3000 ./gather_changesets.sh &lt;first changeset id&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="initialize-the-git-repository-from-the-branch-point">
+<h4>3. Initialize the git Repository from the Branch Point<a class="headerlink" href="#initialize-the-git-repository-from-the-branch-point" title="Permalink to this headline">¶</a></h4>
+<p>Filter the AOI extract according to entities referenced in local changesets:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>node filter-by-use.js huaquillas-fixed.pbf posm/ changesets/*.osc
+<span class="nb">cd</span> posm/
+git init
+git add .
+git commit -m <span class="s2">&quot;Branch point&quot;</span>
+git tag start
+<span class="nb">cd</span> ..
+</pre></div>
+</div>
+</div>
+<div class="section" id="obtain-a-current-aoi-extract">
+<h4>4. Obtain a Current AOI Extract<a class="headerlink" href="#obtain-a-current-aoi-extract" title="Permalink to this headline">¶</a></h4>
+<p>Calculate the bounding box for all local changesets and fetch the corresponding area from Overpass,
+converting to PBF for good measure:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="s2">&quot;(node(</span><span class="k">$(</span>node changeset-bbox.js changesets/*.xml <span class="p">|</span> jq -r <span class="s1">&#39;map(tostring) | [.[1], .[0], .[3], .[2]] | join(&quot;,&quot;)&#39;</span><span class="k">)</span><span class="s2">);&lt;;&gt;&gt;;&gt;;);out meta;&quot;</span> &gt; overpass.query
+wget -O aoi.xml --post-file<span class="o">=</span>overpass.query http://overpass-api.de/api/interpreter
+osmconvert aoi.xml --out-pbf &gt; aoi.pbf
+</pre></div>
+</div>
+</div>
+<div class="section" id="extract-and-apply-upstream-changes">
+<h4>5. Extract and Apply Upstream Changes<a class="headerlink" href="#extract-and-apply-upstream-changes" title="Permalink to this headline">¶</a></h4>
+<p>Filter the AOI extract according to entities referenced in local changesets and apply to a new
+branch. This ensures that there’s a common ancestor when moving commits between branches.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> posm/
+rm -rf *
+<span class="nb">cd</span> ..
+
+node filter-by-use.js aoi.pbf posm/ changesets/*.osc
+<span class="nb">cd</span> posm/
+git add .
+git checkout -b osm
+git commit -m <span class="s2">&quot;Current OSM&quot;</span>
+git tag upstream
+git gc
+<span class="nb">cd</span> ..
+</pre></div>
+</div>
+</div>
+<div class="section" id="apply-local-changesets-to-the-branch-point">
+<h4>6. Apply Local Changesets to the Branch Point<a class="headerlink" href="#apply-local-changesets-to-the-branch-point" title="Permalink to this headline">¶</a></h4>
+<p>This is effectively what has already occurred through editing using the OSM API, although doing it in <cite>git</cite> terms allows us to more easily move changes between branches.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> posm/
+git checkout master
+
+<span class="nv">REPO</span><span class="o">=</span>posm ./preprocess-changesets.sh changesets/
+
+<span class="nb">cd</span> posm/
+git gc
+<span class="nb">cd</span> ..
+</pre></div>
+</div>
+</div>
+<div class="section" id="apply-local-changesets-to-the-upstream-version-and-resolve-conflicts">
+<h4>7-8. Apply Local Changesets to the Upstream Version and Resolve Conflicts<a class="headerlink" href="#apply-local-changesets-to-the-upstream-version-and-resolve-conflicts" title="Permalink to this headline">¶</a></h4>
+<p>Walk through all local changesets and apply them to the upstream branch. This will open your
+configured <code class="docutils literal notranslate"><span class="pre">git</span></code> mergetool (<code class="docutils literal notranslate"><span class="pre">opendiff</span></code> / FileMerge on OS X), allowing you to resolve conflicts
+manually.</p>
+<p>TODO extract this into a script</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> posm/
+git checkout osm
+git tag marker start
+git --no-pager log --reverse --format<span class="o">=</span>%h marker..master <span class="p">|</span> <span class="k">while</span> <span class="nb">read</span> sha1<span class="p">;</span> <span class="k">do</span>
+  git cherry-pick <span class="nv">$sha1</span>
+
+  <span class="nb">echo</span> Applying <span class="nv">$sha1</span>
+
+  <span class="k">if</span> <span class="o">[</span> -f .git/CHERRY_PICK_HEAD <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+    <span class="c1"># remove files that were deleted by us (as we no longer refer to them and</span>
+    <span class="c1"># will submit the deletions as &quot;if-unused&quot;)</span>
+    git status --porcelain <span class="p">|</span> grep ^UD <span class="p">|</span> cut -d <span class="s2">&quot; &quot;</span> -f <span class="m">2</span> <span class="p">|</span> xargs git rm
+
+    <span class="c1"># remove files that were deleted upstream</span>
+    git status --porcelain <span class="p">|</span> grep ^DU <span class="p">|</span> cut -d <span class="s2">&quot; &quot;</span> -f <span class="m">2</span> <span class="p">|</span> xargs git rm
+
+    <span class="c1"># data available to the mergetool:</span>
+    <span class="c1">#  * OSM version</span>
+    <span class="c1">#  * our version</span>
+    <span class="c1">#  * current version of OSM refs (via API) -- (we don&#39;t know the version ref&#39;d)</span>
+    <span class="c1">#  * current version of our refs (via API, if POSM is available) -- (we don&#39;t know the version ref&#39;d)</span>
+
+    <span class="c1"># In other words, we can show node movements, tag and ref/membership changes</span>
+    <span class="c1"># but not way/relation composition (visually)</span>
+    <span class="c1"># TODO sometimes this fails, in which case marker will have already been set to $sha1</span>
+    git mergetool -y --no-prompt
+
+    git clean -f
+
+    git add */
+
+    git commit --allow-empty -C <span class="nv">$sha1</span>
+  <span class="k">fi</span>
+
+  <span class="c1"># remove temporary files</span>
+  git clean -f
+
+  <span class="c1"># update the marker</span>
+  git tag -f marker <span class="nv">$sha1</span>
+<span class="k">done</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="submit-resolved-changesets-upstream">
+<h4>9. Submit Resolved Changesets Upstream<a class="headerlink" href="#submit-resolved-changesets-upstream" title="Permalink to this headline">¶</a></h4>
+<p>Create a new branch for changesets that have been applied upstream and walk through all local
+changesets, submitting them and renumbering (remapping entity IDs and references) as necessary.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> posm/
+git checkout -b applied upstream
+../submit-all.sh
+</pre></div>
+</div>
+<p>ID remapping information will be left behind in <code class="docutils literal notranslate"><span class="pre">.git/map.json</span></code> (cumulative) and <code class="docutils literal notranslate"><span class="pre">.git/&lt;commit&gt;.json</span></code> (per-changeset).</p>
+<p>To track the number of pending changesets, count the number of commits between the <cite>upstream</cite> marker and the tip of the <cite>osm</cite> branch:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>watch <span class="s2">&quot;git --no-pager log --reverse --format=%h upstream..osm | wc -l&quot;</span>
+</pre></div>
+</div>
+<p>The Git repository we produced includes all of the history and context used for reconciliation. Once synchronization has been completed, its primary purpose is as an artifact of the merge process. Rather than partially applying upstream changes to POSM’s database, it’s much easier to replace all of the data with a new extract.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../street-level/intro/" class="btn btn-neutral float-right" title="Overview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../osm-basemap/" class="btn btn-neutral" title="Creating the OSM basemap" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright  CC-BY American Red Cross
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

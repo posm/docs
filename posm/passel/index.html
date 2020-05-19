@@ -1,0 +1,360 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>OpenDroneMap distributed processing &mdash; field tech 0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="General troubleshooting" href="../troubleshooting/" />
+    <link rel="prev" title="Returning from mapping" href="../returning/" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../" class="icon icon-home"> field tech
+          
+
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../getting-started/">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../principles/">Humanitarian principles</a></li>
+</ul>
+<p class="caption"><span class="caption-text">ODK</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../odk/intro/">Open Data Kit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../odk/media/">ODK in the RCRC network</a></li>
+</ul>
+<p class="caption"><span class="caption-text">ODK2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../odk2/intro/">Open Data Kit 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../odk2/rc2relief/">RC2 Relief Tool</a></li>
+</ul>
+<p class="caption"><span class="caption-text">POSM</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../setup/">Getting a POSM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../offline-mapping/">Offline OSM mapping</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">OpenDroneMap distributed processing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#setting-up">Setting up</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#processing">Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#connect-to-a-node">Connect to a node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mount-a-usb-to-copy-files-off-a-node">Mount a USB to copy files off a node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#copy-files-off-a-node-using-the-public-folder">Copy files off a node using the public folder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-logs-of-the-nodeodm-or-clusterodm-worker-processes">Get logs of the NodeODM or ClusterODM worker processes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#change-nodeodm-startup-settings">Change NodeODM startup settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#other-useful-commands">Other useful commands</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/">General troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cloud/">Cloud Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../for-developers/">For Developers</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OpenMapKit</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../omk/intro/">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../omk/installation/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../omk/survey-form/">Creating a survey form</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../omk/osm-basemap/">Creating the OSM basemap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../omk/walkthrough/">Walkthrough</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Street-level imagery</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../street-level/intro/">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../street-level/sony-action-cam/">Sony action cameras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../street-level/mapillary/">Mapillary</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Drones</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../drones/intro/">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../drones/processing/">Imagery processing</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Use cases</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../use-cases/intro/">Introduction</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">field tech</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../">Docs</a> &raquo;</li>
+        
+      <li>OpenDroneMap distributed processing</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/posm/passel.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="opendronemap-distributed-processing">
+<h1>OpenDroneMap distributed processing<a class="headerlink" href="#opendronemap-distributed-processing" title="Permalink to this headline">¶</a></h1>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<p class="last">This section is being edited and updated. Please let us know if you find any errors or omissions.</p>
+</div>
+<p>As of the 0.9.0 release of POSM, it is possible to leverage <a class="reference external" href="https://www.opendronemap.org/clusterodm/">ClusterODM</a> and two or more networked devices to distribute a large dataset split into chunks across multiple processing nodes.</p>
+<div class="section" id="setting-up">
+<h2>Setting up<a class="headerlink" href="#setting-up" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">You’ll want more powerful hardware. We suggest either the Intel NUC NUC6i7KYK or the NUC8i7BEH1 with a 500 GB SSD and 32 GB RAM.</p>
+</li>
+<li><p class="first">Install the SuperPOSM variant on one NUC, and the POSM AUX variant on the other(s).</p>
+</li>
+<li><p class="first">Power down all the POSMs and connect them together via a switch or router. (Note that some routers have port 1 configured as a management port, and attempting to use it without adjusting the default router settings may fail.)</p>
+</li>
+<li><p class="first">Power up the SuperPOSM first. Once it is up and running, connect to its wifi and check that WebODM has started and you can successfully reach the interface.</p>
+</li>
+<li><p class="first">See what nodes are connected and working by opening <a class="reference external" href="http://webodm.posm:20000">http://webodm.posm:20000</a>. It will bring up a UI that shows the connected nodes. We know it’s port 20000 from the <code class="docutils literal notranslate"><span class="pre">--admin-web-port</span> <span class="pre">20000</span></code> parameter setting in <code class="docutils literal notranslate"><span class="pre">/kickstart/etc/systemd/system/clusterodm.service.hbs</span></code> (<a class="reference external" href="https://github.com/posm/posm-build/blob/d52b49ad23124c2bdb5dd24ee9521b10531504a6/kickstart/etc/systemd/system/clusterodm.service.hbs">link to file</a>).</p>
+</li>
+<li><p class="first">Click “Enable Auto Refresh” and then power up the AUX node(s) one at a time. They should automatically self register. If you wait for each node to appear in the list before powering on the next one, you can take note of its IP address. Writing it on a piece of tape stuck to the POSM can help with troubleshooting later.</p>
+</li>
+<li><p class="first">Alternatively to see what’s connected and the status, connect to the SuperPOSM’s wifi and then type <code class="docutils literal notranslate"><span class="pre">nc</span> <span class="pre">posm.io</span> <span class="pre">28080</span></code> and then <code class="docutils literal notranslate"><span class="pre">NODE</span> <span class="pre">LIST</span></code></p>
+</li>
+<li><p class="first">Connect to the SuperPOSM wifi and then ssh into the device. For example by using <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">root&#64;posm.local</span></code> and entering <code class="docutils literal notranslate"><span class="pre">posm</span></code> as a password when prompted. Check the network settings with <code class="docutils literal notranslate"><span class="pre">ifconfig</span> <span class="pre">eno1</span></code> and there should be a line with <code class="docutils literal notranslate"><span class="pre">inet</span></code> and an IP address. Go back to the WebODM interface and in the “Processing Nodes” menu, edit the “Cluster” entry by changing “Hostname” from <code class="docutils literal notranslate"><span class="pre">localhost</span></code> to the the IP address (<code class="docutils literal notranslate"><span class="pre">169.254.31.215</span></code> in the screengrab below).</p>
+<img alt="../../_images/eno1.png" src="../../_images/eno1.png" />
+</li>
+<li><p class="first">You should now be ready to process an image set.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="processing">
+<h2>Processing<a class="headerlink" href="#processing" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Set the processing node to “Cluster”.</li>
+<li>Setting “split” to <code class="docutils literal notranslate"><span class="pre">400</span></code> and “split-overlap” to <code class="docutils literal notranslate"><span class="pre">120</span></code> are conservative values and a good starting point (if running on the hardware recommended above).</li>
+<li>For challenging image sets (for example, lots of similar looking vegetation), you might try increasing the “min-num-features” but if good results aren’t achieved with <code class="docutils literal notranslate"><span class="pre">12,000</span></code> then the problem could be elsewhere.</li>
+<li>Once a task starts, you should be able to see <code class="docutils literal notranslate"><span class="pre">[INFO]</span>&#160;&#160;&#160; <span class="pre">sm_cluster:</span> <span class="pre">True</span></code> in the first lines of the log. If it’s set to <code class="docutils literal notranslate"><span class="pre">None</span></code> then the cluster processing isn’t working correctly.</li>
+</ul>
+</div>
+<div class="section" id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="connect-to-a-node">
+<h3>Connect to a node<a class="headerlink" href="#connect-to-a-node" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Option 1: Attach a monitor and keyboard to the AUX node POSM</li>
+<li>Option 2: Connect via the SuperPOSM wifi
+- <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">root&#64;posm.local</span></code> then enter <code class="docutils literal notranslate"><span class="pre">posm</span></code> for the password when prompted
+- Now jump from the SuperPOSM to the AUX node with <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">root&#64;192.168.88.253</span></code> (Replace with the node’s address. Did you record the IP addresses as you powered up the AUX nodes?)</li>
+</ul>
+</div>
+<div class="section" id="mount-a-usb-to-copy-files-off-a-node">
+<h3>Mount a USB to copy files off a node<a class="headerlink" href="#mount-a-usb-to-copy-files-off-a-node" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Connect to the node</li>
+<li>Attach a USB drive</li>
+<li>Try one of these to find the USB drive name: <code class="docutils literal notranslate"><span class="pre">lsblk</span></code> or <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">blkid</span></code> or <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">fdisk</span> <span class="pre">-l</span></code></li>
+<li>Create a folder, for example <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">mkdir</span> <span class="pre">/usb</span></code></li>
+<li>Mount the USB drive using <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">mount</span> <span class="pre">/dev/sdb1</span> <span class="pre">/usb`</span> <span class="pre">where</span> <span class="pre">``sdb1</span></code> is the name of the USB drive</li>
+<li>Copy files to the folder</li>
+<li>When you’re done, disconnect the USB drive with <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">umount</span> <span class="pre">/usb</span></code></li>
+</ul>
+</div>
+<div class="section" id="copy-files-off-a-node-using-the-public-folder">
+<h3>Copy files off a node using the public folder<a class="headerlink" href="#copy-files-off-a-node-using-the-public-folder" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Connect to the node</li>
+<li>Enter the running docker container</li>
+<li>Copy the file using <code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">file</span> <span class="pre">/var/www/public</span></code></li>
+<li>Access the file via the NodeODM public port: <a class="reference external" href="http://ipofnodeodm:3000/file">http://ipofnodeodm:3000/file</a></li>
+</ul>
+</div>
+<div class="section" id="get-logs-of-the-nodeodm-or-clusterodm-worker-processes">
+<h3>Get logs of the NodeODM or ClusterODM worker processes<a class="headerlink" href="#get-logs-of-the-nodeodm-or-clusterodm-worker-processes" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Connect to the node</li>
+<li>Mount a USB to copy files off a node</li>
+<li>Run <code class="docutils literal notranslate"><span class="pre">journalctl</span> <span class="pre">-u</span> <span class="pre">webodm</span> <span class="pre">&gt;</span> <span class="pre">./usb/webodm_log.txt</span></code> or <code class="docutils literal notranslate"><span class="pre">journalctl</span> <span class="pre">-u</span> <span class="pre">nodeodm</span> <span class="pre">&gt;</span> <span class="pre">./usb/nodeodm_log.txt</span></code> (where <code class="docutils literal notranslate"><span class="pre">./usb</span></code> is the folder created and used to mount the USB)</li>
+</ul>
+</div>
+<div class="section" id="change-nodeodm-startup-settings">
+<h3>Change NodeODM startup settings<a class="headerlink" href="#change-nodeodm-startup-settings" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Edit <code class="docutils literal notranslate"><span class="pre">/etc/systemd/system/nodeodm.service</span></code></li>
+<li>Run <code class="docutils literal notranslate"><span class="pre">systemctl</span> <span class="pre">daemon-reload</span></code> to reload the config</li>
+<li>Restart NodeODM with the new options using <code class="docutils literal notranslate"><span class="pre">systemctl</span> <span class="pre">restart</span> <span class="pre">nodeodm</span></code></li>
+</ul>
+</div>
+<div class="section" id="other-useful-commands">
+<h3>Other useful commands<a class="headerlink" href="#other-useful-commands" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Check network settings
+- <code class="docutils literal notranslate"><span class="pre">ifconfig</span> <span class="pre">eno1</span></code></li>
+<li>Manually trigger the AUX node registration process
+- <code class="docutils literal notranslate"><span class="pre">/usr/local/bin/register-nodeodm-worker.sh</span></code></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../troubleshooting/" class="btn btn-neutral float-right" title="General troubleshooting" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../returning/" class="btn btn-neutral" title="Returning from mapping" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright  CC-BY American Red Cross
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

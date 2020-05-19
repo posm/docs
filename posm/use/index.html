@@ -1,0 +1,461 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Mapping &mdash; field tech 0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Returning from mapping" href="../returning/" />
+    <link rel="prev" title="Preparing for mapping" href="../preparation/" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../" class="icon icon-home"> field tech
+          
+
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../getting-started/">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../principles/">Humanitarian principles</a></li>
+</ul>
+<p class="caption"><span class="caption-text">ODK</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../odk/intro/">Open Data Kit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../odk/media/">ODK in the RCRC network</a></li>
+</ul>
+<p class="caption"><span class="caption-text">ODK2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../odk2/intro/">Open Data Kit 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../odk2/rc2relief/">RC2 Relief Tool</a></li>
+</ul>
+<p class="caption"><span class="caption-text">POSM</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../setup/">Getting a POSM</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../offline-mapping/">Offline OSM mapping</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../preparation/">Preparing for mapping</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Mapping</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#planning-mapping">Planning mapping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#collecting-osm-data">Collecting OSM data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#paper-based-mapping-field-papers">Paper-based mapping (Field Papers)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mobile-data-collection">Mobile data collection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tying-it-all-together">Tying it all together</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#encrypting-sensitive-data">Encrypting sensitive data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#setup-for-macos">Setup for MacOS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-key-pair-and-encrypted-xlsform">Creating key pair and encrypted XLSForm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#decrypting-data">Decrypting data</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../returning/">Returning from mapping</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../passel/">OpenDroneMap distributed processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/">General troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cloud/">Cloud Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../for-developers/">For Developers</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OpenMapKit</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../omk/intro/">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../omk/installation/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../omk/survey-form/">Creating a survey form</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../omk/osm-basemap/">Creating the OSM basemap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../omk/walkthrough/">Walkthrough</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Street-level imagery</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../street-level/intro/">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../street-level/sony-action-cam/">Sony action cameras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../street-level/mapillary/">Mapillary</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Drones</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../drones/intro/">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../drones/processing/">Imagery processing</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Use cases</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../use-cases/intro/">Introduction</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">field tech</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../">Docs</a> &raquo;</li>
+        
+          <li><a href="../offline-mapping/">Offline OSM mapping</a> &raquo;</li>
+        
+      <li>Mapping</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/posm/use.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="mapping">
+<h1>Mapping<a class="headerlink" href="#mapping" title="Permalink to this headline">¶</a></h1>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<p class="last">This section is being edited and updated. Please let us know if you find any errors or omissions.</p>
+</div>
+<p>This section walks through the different POSM features: Editing OSM, Field
+Papers, OpenDataKit and OpenMapKit (including setting up mobile data collection
+on Android phones, OpenDroneMap, key downloads, and the admin interface.</p>
+<div class="section" id="planning-mapping">
+<h2>Planning mapping<a class="headerlink" href="#planning-mapping" title="Permalink to this headline">¶</a></h2>
+<p>Aside from the technology itself, there are a number of things that need to be considered for mapping work: the size of the area, number of enumerators needed and time required, the data required and the data model for collecting it, etc. There’s also a lot of nuance in teaching people (especially in other languages/cultures) how to use different mapping tools. There are a variety of resources (including presentation and training materials) on the <a class="reference external" href="http://www.missingmaps.org">Missing Maps</a> website which may be useful. You can also <a class="reference external" href="https://twitter.com/awesomeposm">reach out</a> in advance and, if we have time, we may be able to talk through your project and provide suggestions from past experiences.</p>
+</div>
+<div class="section" id="collecting-osm-data">
+<h2>Collecting OSM data<a class="headerlink" href="#collecting-osm-data" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="paper-based-mapping-field-papers">
+<h3>Paper-based mapping (Field Papers)<a class="headerlink" href="#paper-based-mapping-field-papers" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="http://fieldpapers.org/">Field Papers</a> creates a grid of atlas pages for an
+area which you can print off and use to walk around the target area and annotate
+the paper map with missing buildings, address points, and any other relevant
+features. Afterwards, you take a photo or scan each page and Field Papers will
+use the QR code on each atlas page to georeference the area - it will appear as
+a semi-transparent layer in iD editor or JOSM and you will need to digitally
+trace your edits into the existing OSM data. The process is largely
+self-explanatory and documented in the actual Field Papers app.</p>
+<p>Creating an atlas (we usually size these so that a single page is no larger than
+a few city blocks):</p>
+<img alt="../../_images/fieldpapers-aoi1.jpg" src="../../_images/fieldpapers-aoi1.jpg" />
+<p>Example of atlas page (we print these in black and white to save money/ink):</p>
+<img alt="../../_images/fieldpapers-atlas.jpg" src="../../_images/fieldpapers-atlas.jpg" />
+<p>Field Papers being used to record addresses in Dhaka, Bangladesh:</p>
+<img alt="../../_images/fieldpapers-dhaka.png" src="../../_images/fieldpapers-dhaka.png" />
+<p>Field Papers has some advantages. It’s great in areas where there may be
+missing features (like buildings) that need to be added into OSM, or where you
+want maximum flexibility for what information you want to collect. We also use
+Field papers mapping in areas where security is a big concern and using
+smartphones would make volunteers targets for theft. The main disadvantage of
+Field Papers is that the data entry afterwards can be time-consuming, we often
+notice spelling mistakes or other inconsistencies afterwards that require more
+time to clean, and it can sometimes be difficult to enumerators to orient
+themselves into the space on the map. For this reason, we prefer using digital
+tools like OpenMapKit.</p>
+</div>
+<div class="section" id="mobile-data-collection">
+<h3>Mobile data collection<a class="headerlink" href="#mobile-data-collection" title="Permalink to this headline">¶</a></h3>
+<p>There’s a variety of different apps and tools to support mobile data collection
+and mapping. We prefer OpenDataKit (ODK) and OpenMapKit (OMK). We
+often find ourselves doing work where we have to collect the same pieces of
+information for all the buildings, schools, etc in an area, and OMK is designed
+to make this process fast and easy.</p>
+<div class="section" id="setting-up-the-phones">
+<h4>Setting up the phones<a class="headerlink" href="#setting-up-the-phones" title="Permalink to this headline">¶</a></h4>
+<p>In terms of hardware, we use Blu Advance 5.0 phones. We’ve tried a lot of
+different phones, and the Blu’s are our favorite so far - cheap,
+hardy, easy to use, and they have a reliable GPS signal.</p>
+<p>Regardless of what type of phone you’re using, you will need to download the ODK
+and OMK apps. These are available through the posm.io homepage - simply connect
+your phone to the POSM wifi to access them.</p>
+<p>POSM can be used to share the install files for several other apps that can help with mapping:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://osmand.net/">OsmAnd</a> . This app provides offline maps and is extremely
+useful for wayfinding and orientation. We also use this for planning travel
+and recording <a class="reference external" href="http://www.missingmaps.org/blog/2017/01/07/gps-tracks/">volunteers’
+tracks</a> during
+mapping work.</li>
+<li><a class="reference external" href="https://opensignal.com/">OpenSignal</a> . This runs in the background to record
+cell phone signal strength when the home screen is in use. You can download
+the data from the phones to see how the signal varied in your mapping area,
+and the data goes into OpenSignal’s crowdsourcing database.</li>
+<li><a class="reference external" href="https://play.google.com/store/apps/details?id=com.domobile.applock&amp;hl=en">AppLock</a> .
+If you’re providing the phones and/or SIM cards for mapping, then you may
+want to be able to control which apps can be used by enumerators and which
+cannot.</li>
+</ul>
+</div>
+<div class="section" id="setting-up-a-form-for-opendatakit-or-openmapkit">
+<h4>Setting up a form for OpenDataKit or OpenMapKit<a class="headerlink" href="#setting-up-a-form-for-opendatakit-or-openmapkit" title="Permalink to this headline">¶</a></h4>
+<p>Before you can use OpenDataKit/OpenMapKit, you need a survey form. There’s some
+documentation on the OpenDataKit website, but here’s a working example as well:</p>
+<p>This is a <a class="reference external" href="https://docs.google.com/spreadsheets/d/11H4-mGYTS61GLjSbVoTbmhoI5DjlF5fcBwNwQcvd2Go/edit#gid=1817602041_">basic buildings
+form</a>
+that we use. It contains three tabs: “survey”, “osm”, and “settings” (which you
+can ignore).</p>
+<p>The “survey” tab contains a series of ODK question types, most of which are
+recorded in the background (e.g. start time, end time, date of survey, device
+ID, etc.). The “osm building tags” question tells  ODK to launch the OpenMapKit
+app and to move to the “osm” tab in the workbook and look for the
+“building_tags” question.</p>
+<img alt="../../_images/odk-example.png" src="../../_images/odk-example.png" />
+<p>First, make any additions to the question types you need and what you want to
+call them. Then, move to the “osm” tab. Here’s how it works:</p>
+<img alt="../../_images/odk-explanation.png" src="../../_images/odk-explanation.png" />
+<p>What this looks like: an enumerator will open ODK to conduct a survey. After
+recording all the background information (start time, etc), ODK will hit the
+“osm” question type and prompt the user to launch OpenMapKit. At this point, the
+user will see a map interface with his/her GPS location and the OSM
+buildings/features surrounding him/her. When the user taps on a building, they
+will see all the OSM tags that currently exist for that building. They will then
+swipe through the survey, which contains one screen for each of the fields in
+the orange box (building, name, etc). Each of those fields will have
+pre-populated choices from the purple box. These correspond to OSM key:value
+pairs, but may be labeled differently in order to make sense to the user.</p>
+<p>If you need help deciding what key:value pairs you need to record (and how to
+classify things appropriately based on context), the <a class="reference external" href="http://wiki.openstreetmap.org/wiki/Main_Page">OSM
+wiki</a>  and
+<a class="reference external" href="https://taginfo.openstreetmap.org/">TagInfo</a>  are both great resources. We are
+currently adding these into the POSM core tools to make them available offline.</p>
+<p>Once you’ve set up your ODK/OMK form, save it as a <cite>.xls</cite> or <cite>.xlsx</cite> (Excel)
+workbook. Access the posm.io homepage, navigate to OpenMapKit (where you’ll see
+the existing forms and can access their submissions and the XLSX form that was
+used to create them). Click the three dots at the top-right of the screen and
+select “Upload form”.</p>
+<img alt="../../_images/omk.png" src="../../_images/omk.png" />
+<p>You can then drag and drop your ODK Excel form to upload it. When it’s done,
+you’ll see it added to the grid of forms in the main OpenMapKit Server menu.</p>
+<img alt="../../_images/omk-upload.png" src="../../_images/omk-upload.png" />
+</div>
+<div class="section" id="using-odk-omk-on-the-phones">
+<h4>Using ODK/OMK on the phones<a class="headerlink" href="#using-odk-omk-on-the-phones" title="Permalink to this headline">¶</a></h4>
+<p>The first time you use a phone for a mobile data collection project, you have to
+get the survey deployment set up - this means map tiles, OSM data, and the
+ODK/OMK form itself.</p>
+<p>This <a class="reference external" href="https://speakerdeck.com/player/58460643e97e4cbabf792b23136ab17b">speakerdeck</a> walks through configuration of ODK and OMK.</p>
+</div>
+<div class="section" id="manually-pushing-data-from-phones-to-posm">
+<h4>Manually pushing data from phones to POSM<a class="headerlink" href="#manually-pushing-data-from-phones-to-posm" title="Permalink to this headline">¶</a></h4>
+<p>If the completed forms are not set to automatically send to POSM, then
+you can push them manually. In the home screen for ODK, press the “Send
+finalized forms” button. There will be a number in parentheses which indicates
+how many unsent forms are on the device:</p>
+<img alt="../../_images/odk-collect.png" src="../../_images/odk-collect.png" />
+</div>
+</div>
+<div class="section" id="tying-it-all-together">
+<h3>Tying it all together<a class="headerlink" href="#tying-it-all-together" title="Permalink to this headline">¶</a></h3>
+<p>Once you’ve walked through this workflow on the phones to set them up, then they
+are tested and ready for use. You will need to complete and save an
+ODK/OMK form for every OSM feature that you survey, and can push these to the
+POSM during/after mapping work.</p>
+</div>
+</div>
+<div class="section" id="encrypting-sensitive-data">
+<h2>Encrypting sensitive data<a class="headerlink" href="#encrypting-sensitive-data" title="Permalink to this headline">¶</a></h2>
+<p>As part of our commitment to responsible data management, the American Red Cross uses encryption when collecting sensitive information using mobile data collection. We do this using ODK Briefcase. The online instructions are a little tricky to follow, so here’s a guide to setting this up.</p>
+<div class="section" id="setup-for-macos">
+<h3>Setup for MacOS<a class="headerlink" href="#setup-for-macos" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>Download <a class="reference external" href="https://opendatakit.org/use/briefcase/">ODK Briefcase</a> . The application is a <code class="docutils literal notranslate"><span class="pre">.jar</span></code> file. Put this somewhere handy.</li>
+<li>Download dependencies. There are instructions for this on the <a class="reference external" href="https://opendatakit.org/help/encrypted-forms">ODK encrypted forms page</a> . Under Configuration, look for the Java Cryptography Extension package (currently available <a class="reference external" href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">here</a> ). Download this package.</li>
+</ol>
+<img alt="../../_images/odk-encryption-pic1.png" src="../../_images/odk-encryption-pic1.png" />
+<p>(JCE package to download)</p>
+<ol class="arabic simple" start="3">
+<li>Unzip the JCE package that you just downloaded. Open the folder it creates. You should see three files, shown in the screenshot below. Copy these files. You will need to paste them to another location.</li>
+</ol>
+<img alt="../../_images/odk-encryption-pic2.png" src="../../_images/odk-encryption-pic2.png" />
+<p>(Copy these files to paste elsewhere)</p>
+<ol class="arabic simple" start="4">
+<li>Navigate to your internet plug-ins. On a Mac, this will generally be <code class="docutils literal notranslate"><span class="pre">Macintosh</span> <span class="pre">HD/Library/Internet</span> <span class="pre">Plug-ins/</span></code>. You should see a file called <code class="docutils literal notranslate"><span class="pre">JavaAppletPlugin.plugin</span></code>. Right-click this file and select <code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">package</span> <span class="pre">contents</span></code>. In the new directory that appears, navigate to <code class="docutils literal notranslate"><span class="pre">Contents/home/lib/security</span></code>. Paste the JCE files (that you copied in Step 3) into this directory.</li>
+</ol>
+<img alt="../../_images/odk-encryption-pic3.png" src="../../_images/odk-encryption-pic3.png" />
+<p>(Paste the JCE files here)</p>
+</div>
+<div class="section" id="creating-key-pair-and-encrypted-xlsform">
+<h3>Creating key pair and encrypted XLSForm<a class="headerlink" href="#creating-key-pair-and-encrypted-xlsform" title="Permalink to this headline">¶</a></h3>
+<p>Now that you’ve got the right configuration, you can start to use ODK Briefcase.</p>
+<p>Creating an encrypted form is just like creating a regular ODK form, except that you will add a public key into the <code class="docutils literal notranslate"><span class="pre">settings</span></code> tab in the XLS form. ODK will build the form with this public key and later on, you’ll use your corresponding private key to decrypt the data.</p>
+<p>To create a public and private key pair:</p>
+<ol class="arabic simple">
+<li>Open Terminal and navigate to the folder where you want the keys to live. I put these in the same directory as where my survey form and results will go.</li>
+<li>Create a private key using the command <code class="docutils literal notranslate"><span class="pre">openssl</span> <span class="pre">genrsa</span> <span class="pre">-out</span> <span class="pre">NameOfKey_private.pem</span> <span class="pre">2048</span></code></li>
+<li>Use the private key you just created in order to create a public key. Use the command <code class="docutils literal notranslate"><span class="pre">openssl</span> <span class="pre">genrsa</span> <span class="pre">-in</span> <span class="pre">NameOfKey_private.pem</span> <span class="pre">-inform</span> <span class="pre">PEM</span> <span class="pre">-out</span> <span class="pre">NameOfKey_public.pem</span> <span class="pre">-outform</span> <span class="pre">PEM</span> <span class="pre">-pubout</span></code></li>
+<li>Navigate to the public key you just created. Open it in a text editor and copy the text.</li>
+<li>In your XLS form, go to the <code class="docutils literal notranslate"><span class="pre">Settings</span></code> tab. If you don’t already have a Settings tab, then create one. You need to have a column titled <code class="docutils literal notranslate"><span class="pre">public_key</span></code>. Paste the text from your public key file into this column. You can then use the XLS form to create your ODK survey and load it onto mobile devices.</li>
+</ol>
+<img alt="../../_images/odk-encryption-pic4.png" src="../../_images/odk-encryption-pic4.png" />
+<p>(Add public key to XLS form)</p>
+</div>
+<div class="section" id="decrypting-data">
+<h3>Decrypting data<a class="headerlink" href="#decrypting-data" title="Permalink to this headline">¶</a></h3>
+<p>We upload data from mobile devices onto omkserver running on POSM servers.</p>
+<p>On omkserver, encrypted data will be a random string of text. You have to download and decrypt the submissions in order to be able to use them. “Downloading” the data works in two steps: first ODK Briefcase fetches (“pulls”) all the encrypted submissions and attachments. Then ODK Briefcase decrypts (“exports”) them.</p>
+<ol class="arabic simple">
+<li>Open ODK Briefcase (the <cite>.jar</cite> file)</li>
+<li>Under the “Pull” tab, select the type of server (ODK Aggregate 1.0) and the server url (<a class="reference external" href="http://posm.io">http://posm.io</a>). Connect to this server and select the forms to fetch.</li>
+<li>Under the “Export” tab, select the form, the export type, the export directory, and the PEM private key file to use for decryption. This will give you a directory with results and attachments.</li>
+</ol>
+<img alt="../../_images/odk-encryption-pic5.png" src="../../_images/odk-encryption-pic5.png" />
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../returning/" class="btn btn-neutral float-right" title="Returning from mapping" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../preparation/" class="btn btn-neutral" title="Preparing for mapping" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright  CC-BY American Red Cross
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

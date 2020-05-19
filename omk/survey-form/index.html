@@ -1,0 +1,585 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Creating a survey form &mdash; field tech 0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Creating the OSM basemap" href="../osm-basemap/" />
+    <link rel="prev" title="Installation" href="../installation/" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../" class="icon icon-home"> field tech
+          
+
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../getting-started/">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../principles/">Humanitarian principles</a></li>
+</ul>
+<p class="caption"><span class="caption-text">ODK</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../odk/intro/">Open Data Kit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../odk/media/">ODK in the RCRC network</a></li>
+</ul>
+<p class="caption"><span class="caption-text">ODK2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../odk2/intro/">Open Data Kit 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../odk2/rc2relief/">RC2 Relief Tool</a></li>
+</ul>
+<p class="caption"><span class="caption-text">POSM</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../posm/intro/">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../posm/setup/">Getting a POSM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../posm/offline-mapping/">Offline OSM mapping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../posm/passel/">OpenDroneMap distributed processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../posm/troubleshooting/">General troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../posm/cloud/">Cloud Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../posm/for-developers/">For Developers</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OpenMapKit</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Creating a survey form</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#basic-example-form">Basic example form</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#osm-sheet">OSM Sheet</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#constraints">Constraints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#configuration-files">Configuration files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#json-schema">JSON Schema</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#constraint-types">Constraint types</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#custom-value">custom_value</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#default">default</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#hide-if">hide_if</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#implicit">implicit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#numeric">numeric</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#required">required</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#select-multiple">select_multiple</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#show-if">show_if</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../osm-basemap/">Creating the OSM basemap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../walkthrough/">Walkthrough</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Street-level imagery</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../street-level/intro/">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../street-level/sony-action-cam/">Sony action cameras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../street-level/mapillary/">Mapillary</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Drones</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../drones/intro/">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../drones/processing/">Imagery processing</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Use cases</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../use-cases/intro/">Introduction</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">field tech</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../">Docs</a> &raquo;</li>
+        
+      <li>Creating a survey form</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/omk/survey-form.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="creating-a-survey-form">
+<h1>Creating a survey form<a class="headerlink" href="#creating-a-survey-form" title="Permalink to this headline">¶</a></h1>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<p class="last">Need to revise and add more details to this section.</p>
+</div>
+<p>The primary change to the forms in OpenDataKit is that we’ve added an <code class="docutils literal notranslate"><span class="pre">osm</span></code> question type. Rather than including a geographic point or shape directly in the data of a form, we instead have an <code class="docutils literal notranslate"><span class="pre">osm</span></code> question that refers to an OSM file that gets created in OpenMapKit.</p>
+<p>This is particularly important for two reasons:</p>
+<ol class="arabic simple">
+<li>A survey about a specific, identifiable feature on a map is far more useful than a GPS point. There is no ambiguity about the <strong>place</strong> you are surveying.</li>
+<li>Surveys can directly enrich OpenStreetMap by adding tags to OSM features. You can create easily accessible public information for OpenStreetMap in addition to your private, domain specific ODK survey data.</li>
+</ol>
+<p>An OSM question is a new “media type”, which means that it functions in the survey in the same manner as a photo or video. When an <strong>osm</strong> question is specified in a survey, ODK Collect opens OpenMapKit, providing parameters for the tags to be entered for an OSM feature that you will select.</p>
+<div class="section" id="basic-example-form">
+<h2>Basic example form<a class="headerlink" href="#basic-example-form" title="Permalink to this headline">¶</a></h2>
+<p>If you download this <a class="reference external" href="https://docs.google.com/spreadsheets/d/11H4-mGYTS61GLjSbVoTbmhoI5DjlF5fcBwNwQcvd2Go/edit?usp=sharing">Basic OpenMapKit Example</a> form, you can see a simple OSM question. This question is named <code class="docutils literal notranslate"><span class="pre">osm_building</span></code>. In the type column, it is defined to be <code class="docutils literal notranslate"><span class="pre">osm</span></code>. It also has a parameter of <code class="docutils literal notranslate"><span class="pre">building_tags</span></code>.</p>
+<img alt="../../_images/survey-form-1.png" src="../../_images/survey-form-1.png" />
+<p>This parameter is referenced in the <code class="docutils literal notranslate"><span class="pre">osm</span></code> sheet, between choices and settings.</p>
+<div class="section" id="osm-sheet">
+<h3>OSM Sheet<a class="headerlink" href="#osm-sheet" title="Permalink to this headline">¶</a></h3>
+<img alt="../../_images/survey-form-2.png" src="../../_images/survey-form-2.png" />
+<p>The <strong>osm sheet</strong> has three columns: list name, name, and label. This sheet defines the tagging parameters that will be sent to OpenMapKit.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>&#160;</td>
+<td>A</td>
+<td>B</td>
+<td>C</td>
+</tr>
+<tr class="row-even"><td>1</td>
+<td>list name</td>
+<td>name</td>
+<td>label</td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">list</span> <span class="pre">name</span></code> has two functions.</p>
+<ol class="arabic simple">
+<li>It defines the set of tags that OpenMapKit will add to an OSM feature.</li>
+<li>It defines the set of tag values selectable for a given OSM tag. <strong>(optional)</strong></li>
+</ol>
+<p>In the survey sheet, our <code class="docutils literal notranslate"><span class="pre">osm_building</span></code> question had a type parameter of <code class="docutils literal notranslate"><span class="pre">building_tags</span></code>. In the osm sheet, we have several rows with the <code class="docutils literal notranslate"><span class="pre">list</span> <span class="pre">name</span></code> of <code class="docutils literal notranslate"><span class="pre">_building_tags</span></code>. This is the set of OSM tags the user will answer in OpenMapKit.</p>
+<p>The set of OSM tags has a <code class="docutils literal notranslate"><span class="pre">list</span> <span class="pre">name</span></code> suffix of “_tags”. The values in the <code class="docutils literal notranslate"><span class="pre">name</span></code> column are the tag keys that are recognized in OSM. The values in the <code class="docutils literal notranslate"><span class="pre">label</span></code> column are the labels that will be presented to the user when entering values for the given OSM tag.</p>
+<p>Often times we do not want the user directly typing in values for an OSM tag. Typing in a specific string value is error prone, and if there is a set of possible values that we want for a given tag, we want to present these values as a multiple choice question to the user.</p>
+<p>Notice that one of the <code class="docutils literal notranslate"><span class="pre">building_tags</span></code> has the name <code class="docutils literal notranslate"><span class="pre">building</span></code>.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>8</td>
+<td>building_tags</td>
+<td>building</td>
+<td>Building</td>
+</tr>
+</tbody>
+</table>
+<p>We want to give the user multiple choices of values for a building tag. These are the corresponding tag value choices that will be presented to the user in OpenMapKit:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>11</td>
+<td>building</td>
+<td>residential</td>
+<td>Residential</td>
+</tr>
+<tr class="row-even"><td>12</td>
+<td>building</td>
+<td>commercial</td>
+<td>Commercial</td>
+</tr>
+<tr class="row-odd"><td>13</td>
+<td>building</td>
+<td>industrial</td>
+<td>Industrial</td>
+</tr>
+<tr class="row-even"><td>14</td>
+<td>building</td>
+<td>yes</td>
+<td>Other</td>
+</tr>
+</tbody>
+</table>
+<p>This step is optional, and if you do not provide a set of tag values, the user will manually type in a value for a given question.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Multiple choice OMK tag question</td>
+<td>Manual string Value OMK tag question</td>
+</tr>
+<tr class="row-even"><td><img alt="../../_images/survey-form-3.png" class="first last" src="../../_images/survey-form-3.png" />
+</td>
+<td><img alt="../../_images/survey-form-4.png" class="first last" src="../../_images/survey-form-4.png" />
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="constraints">
+<h2>Constraints<a class="headerlink" href="#constraints" title="Permalink to this headline">¶</a></h2>
+<p>As of the <a class="reference external" href="https://github.com/AmericanRedCross/OpenMapKitAndroid/releases/tag/v1.1">OpenMapKit Android 1.1 release</a>, we have added the functionality known as constraints. In effect, you can configure, both globally and on a form-by-form basis the behavior of the tagging user experience.</p>
+<div class="section" id="configuration-files">
+<h3>Configuration files<a class="headerlink" href="#configuration-files" title="Permalink to this headline">¶</a></h3>
+<p>OpenMapKit Android comes with a <a class="reference external" href="https://github.com/AmericanRedCross/OpenMapKitAndroid/blob/master/app/src/main/assets/constraints/default.json">default.json</a> configuration file as well as an example form-specifc JSON file called <a class="reference external" href="https://github.com/AmericanRedCross/OpenMapKitAndroid/blob/master/app/src/main/assets/constraints/Buildings.json">Buildings.json</a>. These files come with the application, and they are automatically copied from the app’s assets into the OpenMapKit constraints directory in your external storage. You can later edit these files and update the constraints for your custom purposes.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>/sdcard/openmapkit/constraints/
+</pre></div>
+</div>
+<p>The <cite>default.json</cite> file defines constraints that are to be applied to all surveys, and the <cite>Buildings.json</cite> is an example of a form-specific configuration that applies only to the Buildings form.</p>
+<p>The form-specific configurations are named after the <code class="docutils literal notranslate"><span class="pre">form</span> <span class="pre">title</span></code> of your XLSX form.</p>
+<a class="reference internal image-reference" href="../../_images/constraints-1.png"><img alt="Alternative text" src="../../_images/constraints-1.png" style="width: 300px;" /></a>
+<p>You can also see this title in OpenMapKit Server.</p>
+<a class="reference internal image-reference" href="../../_images/constraints-2.png"><img alt="Alternative text" src="../../_images/constraints-2.png" style="width: 300px;" /></a>
+</div>
+<div class="section" id="json-schema">
+<h3>JSON Schema<a class="headerlink" href="#json-schema" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://github.com/AmericanRedCross/OpenMapKitAndroid/blob/master/app/src/main/assets/constraints/default.json">default.json</a> is a good file for you to look at to see how to build your own constraint configuration.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;addr:city&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;default&quot;</span><span class="p">:</span> <span class="s2">&quot;Sacramento&quot;</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;addr:housenumber&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;numeric&quot;</span><span class="p">:</span> <span class="kc">true</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;addr:state&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;default&quot;</span><span class="p">:</span> <span class="s2">&quot;CA&quot;</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;addr:postcode&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;numeric&quot;</span><span class="p">:</span> <span class="kc">true</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;amenity&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;hide_if&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;building&quot;</span><span class="p">:</span> <span class="s2">&quot;residential&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;shop&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="nt">&quot;office&quot;</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;custom_value&quot;</span><span class="p">:</span> <span class="kc">true</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;building&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;default&quot;</span><span class="p">:</span> <span class="s2">&quot;yes&quot;</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;building:levels&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;numeric&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nt">&quot;custom_value&quot;</span><span class="p">:</span> <span class="kc">true</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;cuisine&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;show_if&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;amenity&quot;</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;network&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;select_multiple&quot;</span><span class="p">:</span> <span class="kc">true</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;office&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;hide_if&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;amenity&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="nt">&quot;shop&quot;</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;opening_hours&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;select_multiple&quot;</span><span class="p">:</span> <span class="kc">true</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;operator&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;select_multiple&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nt">&quot;custom_value&quot;</span><span class="p">:</span> <span class="kc">true</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;religion&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;show_if&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;amenity&quot;</span><span class="p">:</span> <span class="s2">&quot;place_of_worship&quot;</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;shop&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;custom_value&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nt">&quot;hide_if&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;building&quot;</span><span class="p">:</span> <span class="s2">&quot;residential&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;amenity&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="nt">&quot;office&quot;</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;source&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;implicit&quot;</span><span class="p">:</span> <span class="s2">&quot;survey&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>It is a simple JSON object where the keys are the names of the OSM tag keys that have constraints applied. The values are the name of the constraint, with the condition of the constraint.</p>
+<p>For example, the <code class="docutils literal notranslate"><span class="pre">religion</span></code> OSM tag is only shown in OpenMapKit Android if you have selected <code class="docutils literal notranslate"><span class="pre">place_of_worship</span></code> for your <code class="docutils literal notranslate"><span class="pre">amenity</span></code> tag.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&quot;religion&quot;: {
+      &quot;show_if&quot;: {
+        &quot;amenity&quot;: &quot;place_of_worship&quot;
+      }
+}
+</pre></div>
+</div>
+<p>Your form-specific JSON files are structured exactly the same, and they take a cascading effect, over-riding constraints for the same tags in <code class="docutils literal notranslate"><span class="pre">default.json</span></code>.</p>
+</div>
+<div class="section" id="constraint-types">
+<h3>Constraint types<a class="headerlink" href="#constraint-types" title="Permalink to this headline">¶</a></h3>
+<p>The following are all of the types of constraints you can apply on an OSM tag key.</p>
+<div class="section" id="custom-value">
+<h4>custom_value<a class="headerlink" href="#custom-value" title="Permalink to this headline">¶</a></h4>
+<p>For tags that have a select one or a select many interface, if you enable the <cite>custom_value</cite> constraint to true, the user can input a custom tag value in addition to the pre-defined choices.</p>
+<a class="reference internal image-reference" href="../../_images/constraints-3.png"><img alt="Alternative text" src="../../_images/constraints-3.png" style="width: 300px;" /></a>
+<p>This is a <cite>boolean</cite> type constraint. You simply have a <cite>“custom_value”: true</cite> for our given OSM tag.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&quot;building&quot;: {
+  &quot;custom_value&quot;: true
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="default">
+<h4>default<a class="headerlink" href="#default" title="Permalink to this headline">¶</a></h4>
+<p>A <cite>default</cite> constraint for a tag applies a default value for a given OSM tag. The user can change that value if she chooses.</p>
+<a class="reference internal image-reference" href="../../_images/constraints-4.png"><img alt="Alternative text" src="../../_images/constraints-4.png" style="width: 300px;" /></a>
+<p>This is a <cite>string</cite> type constraint.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&quot;addr:city&quot;: {
+  &quot;default&quot;: &quot;Sacramento&quot;
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="hide-if">
+<h4>hide_if<a class="headerlink" href="#hide-if" title="Permalink to this headline">¶</a></h4>
+<p>A <code class="docutils literal notranslate"><span class="pre">hide_if</span></code> constraint for a tag hides the given tag from the user interface if the containing tag exists or has a certain value.</p>
+<p>This can be a <strong>boolean</strong> or a <strong>string</strong> type constraint. A <strong>hide_if</strong> constraint can have both. If the constraint condition is <strong>true</strong>, the constraint applies regardless of what the conditional tag value is. Or, if the constraint condition has a <strong>string</strong> value, it applies only if the dependent tag key and value is true.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&quot;shop&quot;: {
+  &quot;hide_if&quot;: {
+    &quot;building&quot;: &quot;residential&quot;,
+    &quot;amenity&quot;: true,
+    &quot;office&quot;: true
+  }
+}
+</pre></div>
+</div>
+<p>This constraint applies for a <strong>shop</strong>. A <strong>shop</strong> is hidden if <strong>building</strong> is <strong>residential</strong> or if a value is given for <strong>amenity</strong> or <strong>office</strong>.</p>
+</div>
+<div class="section" id="implicit">
+<h4>implicit<a class="headerlink" href="#implicit" title="Permalink to this headline">¶</a></h4>
+<p>An <code class="docutils literal notranslate"><span class="pre">implicit</span></code> constraint gives a tag a specified value and does not show the tag in the user interface to the user. The OSM Element is tagged with an implicit key / value with no user intervention.</p>
+<p>This is a <strong>boolean</strong> type constraint.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&quot;source&quot;: {
+  &quot;implicit&quot;: &quot;survey&quot;
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="numeric">
+<h4>numeric<a class="headerlink" href="#numeric" title="Permalink to this headline">¶</a></h4>
+<p>A <code class="docutils literal notranslate"><span class="pre">numeric</span></code> constraint makes the numeric keyboard pop up by default for a question. The user still can toggle back to an alpha keyboard.</p>
+<a class="reference internal image-reference" href="../../_images/constraints-5.png"><img alt="Alternative text" src="../../_images/constraints-5.png" style="width: 300px;" /></a>
+<p>This is a <strong>boolean</strong> type constraint.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&quot;addr:housenumber&quot;: {
+  &quot;numeric&quot;: true
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="required">
+<h4>required<a class="headerlink" href="#required" title="Permalink to this headline">¶</a></h4>
+<p>A <code class="docutils literal notranslate"><span class="pre">required</span></code> constraint forces the user to answer a given question. You will know it is a required question when you see <strong>Required</strong> in the top right corner or the screen.</p>
+<a class="reference internal image-reference" href="../../_images/constraints-6.png"><img alt="Alternative text" src="../../_images/constraints-6.png" style="width: 300px;" /></a>
+<p>If the user does not answer the tag question, the following Snackbar will divert the user from bouncing back into ODK Collect.</p>
+<a class="reference internal image-reference" href="../../_images/constraints-7.png"><img alt="Alternative text" src="../../_images/constraints-7.png" style="width: 300px;" /></a>
+<p>Clicking on OK will scroll you to the first missing required tag.</p>
+<p>This is a <strong>boolean</strong> type constraint.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&quot;addr:street&quot;: {
+  &quot;required&quot;: true
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="select-multiple">
+<h4>select_multiple<a class="headerlink" href="#select-multiple" title="Permalink to this headline">¶</a></h4>
+<p>A <code class="docutils literal notranslate"><span class="pre">select_multiple</span></code> constraint allows the user to select multiple values for a given tag. These tag values are <code class="docutils literal notranslate"><span class="pre">;</span></code> delimited, and this is the standard OpenStreetMap convention for having multiple values for a tag.</p>
+<a class="reference internal image-reference" href="../../_images/constraints-8.png"><img alt="Alternative text" src="../../_images/constraints-8.png" style="width: 300px;" /></a>
+<p>This is a <strong>boolean</strong> type constraint.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&quot;network&quot;: {
+  &quot;select_multiple&quot;: true
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="show-if">
+<h4>show_if<a class="headerlink" href="#show-if" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">show_if</span></code> is the opposite of <code class="docutils literal notranslate"><span class="pre">hide_if</span></code>. A tag is hidden unless the constraint condition is met.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&quot;religion&quot;: {
+  &quot;show_if&quot;: {
+    &quot;amenity&quot;: &quot;place_of_worship&quot;
+  }
+}
+</pre></div>
+</div>
+<p>In this example, the <strong>religion</strong> tag is only shown if the <strong>amenity</strong> is a <strong>place_of_worship</strong>.</p>
+<p>This is a <strong>boolean</strong> or <strong>string</strong> type constraint.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../osm-basemap/" class="btn btn-neutral float-right" title="Creating the OSM basemap" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../installation/" class="btn btn-neutral" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright  CC-BY American Red Cross
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

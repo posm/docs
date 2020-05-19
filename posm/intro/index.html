@@ -1,0 +1,444 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Overview &mdash; field tech 0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Getting a POSM" href="../setup/" />
+    <link rel="prev" title="RC2 Relief Tool" href="../../odk2/rc2relief/" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../" class="icon icon-home"> field tech
+          
+
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../getting-started/">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../principles/">Humanitarian principles</a></li>
+</ul>
+<p class="caption"><span class="caption-text">ODK</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../odk/intro/">Open Data Kit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../odk/media/">ODK in the RCRC network</a></li>
+</ul>
+<p class="caption"><span class="caption-text">ODK2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../odk2/intro/">Open Data Kit 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../odk2/rc2relief/">RC2 Relief Tool</a></li>
+</ul>
+<p class="caption"><span class="caption-text">POSM</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#posm-workflow">POSM workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#getting-started">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#components">Components</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ubuntu">Ubuntu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#openstreetmap-website">openstreetmap-website</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cgimap">CGImap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id-editor">iD Editor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#openmapkitserver">OpenMapKitServer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Field Papers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">posm-carto</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">posm-admin</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#history">History</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#philosophy">Philosophy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#genesis">Genesis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#inspiration">Inspiration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#putting-it-all-together">Putting it All Together</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#more-power">More Power</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../setup/">Getting a POSM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../offline-mapping/">Offline OSM mapping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../passel/">OpenDroneMap distributed processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/">General troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cloud/">Cloud Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../for-developers/">For Developers</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OpenMapKit</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../omk/intro/">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../omk/installation/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../omk/survey-form/">Creating a survey form</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../omk/osm-basemap/">Creating the OSM basemap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../omk/walkthrough/">Walkthrough</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Street-level imagery</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../street-level/intro/">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../street-level/sony-action-cam/">Sony action cameras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../street-level/mapillary/">Mapillary</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Drones</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../drones/intro/">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../drones/processing/">Imagery processing</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Use cases</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../use-cases/intro/">Introduction</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">field tech</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../">Docs</a> &raquo;</li>
+        
+      <li>Overview</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/posm/intro.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="overview">
+<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<p class="last">This section is being edited and updated. Please let us know if you find any errors or omissions.</p>
+</div>
+<p>The American Red Cross typically uses cloud-based mobile apps for its mapping work. These tools require an internet or cell phone connection to create, modify, or troubleshoot mapping surveys, and to upload data periodically. We sometimes need to conduct projects in areas without dependable internet or cellular connectivity, where those mapping may have to be offline for days or weeks at a time. To bridge that gap, we developed POSM (Portable OpenStreetMap) - letting us conduct major field efforts and work entirely offline for months at time. POSM integrates best-of-breed tools from a variety of sources and developers on a single hardware device that can be deployed for mapping efforts, particularly when internet access is absent.</p>
+<p>POSM broadcasts a wireless signal that other devices can connect to in order to locally access tools that ordinarily require an internet connection. POSM let’s you bring the standard toolset along for the ride when you don’t have access to cheap and fast internet connectivity.</p>
+<p>Currently, POSM includes support for GIS and mapping tools used by the Missing Maps project:</p>
+<ul class="simple">
+<li>offline <a class="reference external" href="https://www.openstreetmap.org">OpenStreetMap</a></li>
+<li>editing (using <a class="reference external" href="https://www.openstreetmap.org/edit?editor=id">iD</a>, <a class="reference external" href="https://josm.openstreetmap.de/">JOSM</a>, and other parts of the OSM ecosystem)</li>
+<li>paper-based field mapping (<a class="reference external" href="http://fieldpapers.org">Field Papers</a>)</li>
+<li>field enumeration using mobile devices (OpenMapKit)</li>
+<li>drone imagery processing (<a class="reference external" href="https://github.com/OpenDroneMap/WebODM#readme">WebODM</a> / <a class="reference external" href="http://opendronemap.org">OpenDroneMap</a>)</li>
+<li>file-sharing</li>
+</ul>
+<p>Wish list of functionality:</p>
+<ul class="simple">
+<li>mapper coordination (using the <a class="reference external" href="http://tasks.hotosm.org">HOT Tasking Manager</a>)</li>
+<li>any tools to make the work of a disconnected humanitarian easier - have ideas? get in touch!</li>
+</ul>
+<p>POSM can also include software downloads and other useful apps for mapping and mobile data collection:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://www.qgis.org_en/site/index.html">QGIS</a> (open source desktop GIS)</li>
+<li><a class="reference external" href="http://openrefine.org">OpenRefine</a> (desktop data cleaning)</li>
+<li><a class="reference external" href="http://osmand.net/">OsmAnd</a> (navigation and GPX-recording app)</li>
+<li><a class="reference external" href="https://opensignal.com/">OpenSignal</a> (crowdsourced cell signal-strength recording)</li>
+<li><a class="reference external" href="https://play.google.com/store/apps/details?id=com.domobile.applock&amp;hl=en">AppLock</a> (to prevent volunteers from using up cell data for social networking, etc)</li>
+</ul>
+<p>This means that any or all parts of a mapping workflow can happen offline. A user can pre-download files for an area of interest and then transport POSM to the area. Mappers can do any and all of the following: fly a drone, process the imagery, use that to conduct a mapathon and create a base map, conduct a phone-based survey, add local detail to the base map with either paper-based or mobile phone-based methods, and pull the resulting data from the phones onto a local server. This cycle can be repeated over and over again to build off of previous efforts. When a project finishes, users take POSM back to an area with internet and push the data to OpenStreetMap and other relevant places.</p>
+<div class="section" id="posm-workflow">
+<h2>POSM workflow<a class="headerlink" href="#posm-workflow" title="Permalink to this headline">¶</a></h2>
+<img alt="../../_images/workflow.png" src="../../_images/workflow.png" />
+<p>POSM has been used for mapping Liberia, Sri Lanka, Comoros, Ecuador, and Seattle. It also has potential for use as a secure data-sharing tool (e.g. local intranet for disconnected areas) and many other applications. Additional software can be integrated into the devices.</p>
+</div>
+<div class="section" id="getting-started">
+<h2>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+<p>Interested in using POSM? This site walks through all the steps for obtaining, setting up, and using the device. If you are not sure whether or not POSM is right for your project, you can <a class="reference external" href="https://twitter.com/awesomeposm">contact us</a> and we can talk it through with you.</p>
+<p>Please note that the POSM software is free and open-source; the American Red Cross developed this for its own projects but we are happy for others to benefit from it. We do not sell the devices, nor do we make a profit on the technology.</p>
+<p>The <a class="reference external" href="http://wiki.openstreetmap.org/wiki/Elements">OpenStreetMap data model</a> (nodes, ways, relations) is POSM’s lingua franca. Many formats may be derived from it, but all are assumed to be lossy in some way or another.</p>
+<p>OSM XML and PBF formats are effectively interchangeable, but we prefer OSM PBF for its substantially smaller file size (and roughly equivalent tool support).</p>
+<p>Once data has been loaded into the system (from export.posm.io as an OSM PBF), OSM’s API DB becomes the source of truth, as it retains the OSM data model and captures historical editing activity. It can be relatively easily converted to OSM PBF (using Osmosis) in order for other tools to create derivative forms (e.g. osm2pgsql updating a rendering database for posm-carto to use). This actually occurs periodically as part of the backup process.</p>
+</div>
+<div class="section" id="components">
+<h2>Components<a class="headerlink" href="#components" title="Permalink to this headline">¶</a></h2>
+<p>POSM is built on top of Ubuntu 18.04 LTS and incorporates the following pieces:</p>
+<ul class="simple">
+<li>Admin - <a class="reference external" href="https://github.com/AmericanRedCross/posm-admin">posm-admin</a>, POSM’s administrative interface and data provisioning tool</li>
+<li>Bridge - bridged networking support–allows POSM devices to be used as conventional WiFi hotspots</li>
+<li>Captive - captive portal mode–prevents clients from accessing the internet while surfacing locally-available POSM services</li>
+<li>Carto - <a class="reference external" href="https://github.com/AmericanRedCross/posm-carto">posm-carto</a>, a TileMill style intended to highlight data present in OSM following the <a class="reference external" href="http://wiki.openstreetmap.org/wiki/Humanitarian_OSM_Tags">Humanitarian Data Model</a></li>
+<li>CGImap</li>
+<li>Field Papers - an offline-tuned <a class="reference external" href="http://fieldpapers.org">Field Papers</a> instance</li>
+<li>GIS - Miscellaneous command-line GIS tools (GDAL et al)</li>
+<li>iD Editor</li>
+<li>MySQL - MySQL server (required by Field Papers)</li>
+<li>Nginx - HTTP server and reverse proxy</li>
+<li>NodeJS - Node.js runtime (required by other components)</li>
+<li>OMK - <a class="reference external" href="https://github.com/posm/OpenMapKitServer">OpenMapKit Server</a></li>
+<li>OSM - an <a class="reference external" href="https://github.com/posm/openstreetmap-website">offline-tuned OpenStreetMap</a> instance</li>
+<li>PostGIS - PostgreSQL server with PostGIS (required by OSM)</li>
+<li>Ruby - Ruby runtime (required by Field Papers and OSM)</li>
+<li>Samba - SMB fileshares</li>
+<li>Tessera - Map tile server (renders posm-carto and MBTiles archives that have been provided)</li>
+<li>TL - Command-line map tile Swiss Army knife</li>
+<li>WiFi - access point support–allows POSM devices to be connected to wirelessly</li>
+</ul>
+<div class="section" id="ubuntu">
+<h3>Ubuntu<a class="headerlink" href="#ubuntu" title="Permalink to this headline">¶</a></h3>
+<p>We chose to build on Ubuntu 14.04 both for its long-term support and because it’s relatively-well supported by open source GIS tools that we use to glue components together.</p>
+<p>For pragmatic reasons (which were valid at the start of the project, if not today), POSM is
+primarily provisioned using a set of shell scripts (which can be used to preseed <code class="docutils literal notranslate"><span class="pre">debian-installer</span></code>
+when installing from a USB stick) that download and configure each software component, typically
+preferring the native packaging system for each underlying software platform (e.g. RubyGems with
+<code class="docutils literal notranslate"><span class="pre">bundler</span></code>, <code class="docutils literal notranslate"><span class="pre">npm</span></code>, and <code class="docutils literal notranslate"><span class="pre">pip</span></code> with <code class="docutils literal notranslate"><span class="pre">virtualenv</span></code>) rather than creating Debian packages which would need to be maintained separately for each.</p>
+<p>An additional reason for using platform-native packaging systems is that they tend to do a better
+job of isolating differing dependencies from other components (at the expense of disk space), which
+is important for POSM, as we have little control over what our service dependencies require.</p>
+<p>In some cases, system-wide versions are in use, e.g. Ruby, Python, and Node.js.</p>
+<p>The individual “deploy” scripts in <code class="docutils literal notranslate"><span class="pre">posm-build</span></code> are generally intended to be runnable multiple times
+without causing problems. Warnings and errors may be output, but they generally occur when a command
+that can only produce a single effect is run more than once, e.g. user creation. However, in some
+cases, data may be deleted, particularly when databases are (re-)configured.</p>
+</div>
+<div class="section" id="openstreetmap-website">
+<h3>openstreetmap-website<a class="headerlink" href="#openstreetmap-website" title="Permalink to this headline">¶</a></h3>
+<p>We use a lightly customized version of openstreetmap-website (see the <code class="docutils literal notranslate"><span class="pre">posm</span></code> branch) to allow data
+to be browsed and edited. The bulk of local modifications are to facilitate offline usage (disabling
+functionality in certain places and reconfiguring map layers) and simplified editing (preventing
+users from needing to log in). Additional modifications involve configuring the application to run
+behind Nginx (using Puma).</p>
+</div>
+<div class="section" id="cgimap">
+<h3>CGImap<a class="headerlink" href="#cgimap" title="Permalink to this headline">¶</a></h3>
+<p>Like openstreetmap.org, we use CGImap to serve the bulk of API calls. We use it unmodified.</p>
+</div>
+<div class="section" id="id-editor">
+<h3>iD Editor<a class="headerlink" href="#id-editor" title="Permalink to this headline">¶</a></h3>
+<p>POSM maintains some minor local modifications to the iD editor. These consist of disabling
+functionality that requires internet access (e.g. Nominatim (geocoding) and Taginfo (statistics +
+info about how tags are used)) and configuring available background layers.</p>
+</div>
+<div class="section" id="openmapkitserver">
+<h3>OpenMapKitServer<a class="headerlink" href="#openmapkitserver" title="Permalink to this headline">¶</a></h3>
+<p>OpenMapKitServer is a Node.js-based OpenDataKit (ODK) Aggregate-compatible server with additional
+functionality that allows OSM edits to be synchronized directly to an API endpoint. When used with
+POSM, edits are submitted to the local API instance (typically <code class="docutils literal notranslate"><span class="pre">http://osm.posm.io/</span></code>).</p>
+</div>
+<div class="section" id="id1">
+<h3>Field Papers<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>Field Papers runs unmodified, as necessary configuration hooks were built in during POSM
+development. Notable changes relative to fieldpapers.org include the use of local disks (versus S3) for
+storage of PDFs, GeoTIFFs, and uploaded snapshots, a web hook configured to notify POSM admin (or
+OMK Server?) when atlases have been created, and exposure of an SMB share that allows snapshots to
+be uploaded in bulk by copying them to a fileshare.</p>
+<p>TODO create a Field Papers section in “Use” / “Operation”</p>
+<p>TODO elaborate on the effect of the web hooks</p>
+<p>TODO elaborate on how snapshots can be uploaded in bulk</p>
+<p>TODO highlight CSV grids</p>
+</div>
+<div class="section" id="id2">
+<h3>posm-carto<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>TODO discuss HDM support</p>
+<p>TODO discuss worldwide locator map</p>
+<p>TODO mention slowness</p>
+<p>TODO <code class="docutils literal notranslate"><span class="pre">service</span> <span class="pre">tessera</span> <span class="pre">restart</span></code> after loading new data</p>
+</div>
+<div class="section" id="id3">
+<h3>posm-admin<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>TODO</p>
+<div class="admonition-todo admonition" id="index-1">
+<p class="first admonition-title">Todo</p>
+<p class="last">This following needs to rewritten and modified so it makes sense in the larger scheme of the docs.</p>
+</div>
+</div>
+</div>
+<div class="section" id="history">
+<h2>History<a class="headerlink" href="#history" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="philosophy">
+<h3>Philosophy<a class="headerlink" href="#philosophy" title="Permalink to this headline">¶</a></h3>
+<p>When faced with the decision of whether to create a new tool to achieve a well-defined goal, we have opted to use or adapt existing solutions and create glue components that allow them to work together with other tools that have already been incorporated into POSM. As POSM is primarily about collecting and improving geographic data that exists within OpenStreetMap, the OSM ecosystem is the source of first choice.</p>
+<p>We would rather adapt existing tools and combine them with others to achieve goals rather than write (and support) our own. Software that supports POSM should be Open Source if at all possible.</p>
+<p>“Small pieces loosely joined” describes the world we map and develop software within; therefore, it should also describe the systems we build.</p>
+<p>OpenStreetMap’s data model may appear unconventional, but the tools developed within that paradigm are generally more user-centric than more typical GIS analysis tools.</p>
+</div>
+<div class="section" id="genesis">
+<h3>Genesis<a class="headerlink" href="#genesis" title="Permalink to this headline">¶</a></h3>
+<p>The idea of the POSM came at the <a class="reference external" href="http://wiki.openstreetmap.org/wiki/HOT_Summit">HOT Summit 2015</a> at the <a class="reference external" href="http://www.openstreetmap.org/way/66409265#map=19/38.89636/-77.04556">American Red Cross headquarters</a> in Washington, DC. Here we presented the first release of OpenMapKit. At that time, OpenMapKit only had the Android component. We were relying on a 3rd party ODK Aggregate server in the cloud to submit survey data. This solution was a great start, and it served our needs when we had a good internet connection at the base camp of an urban survey.</p>
+<p>The primary use case of OpenMapKit is to enable a fleet of volunteers to check out a phone and survey an assigned area. This is a standard Missing Maps workflow used by the Red Cross, World Bank, Doctors Without Borders (MSF), and other NGOs. It is a big, all day event, where people come together and enhance OpenStreetMap for a given community.</p>
+<p>We use a suite of tools to get the job done, and we typically have 30+ volunteers involved. We gather data in the field both with OpenMapKit and Field Papers, and when we return to base camp, we validate and submit this data ultimately to OpenStreetMap.</p>
+<p>Usually this work is conducted in vulnerable communities in developing countries. When we are working in an urban area, we can usually find an internet connection, but the reliability and bandwidth is often very limited. When 30+ people try to access OpenDataKit and OpenStreetMap services in the cloud, <strong>the internet connection is guaranteed to grind to a halt!</strong></p>
+<p>In fact, this problem presents itself everywhere, including the Red Cross HQ in Washington, DC. Further, groups such as the MSF conduct surveys in very remote, rural areas. The team will go days without an internet connection; cloud services are simply <strong>out of reach</strong>.</p>
+<p>The question at hand is: How do you sync data to the cloud when you are somewhere so remote that internet access is simply not an option?</p>
+</div>
+<div class="section" id="inspiration">
+<h3>Inspiration<a class="headerlink" href="#inspiration" title="Permalink to this headline">¶</a></h3>
+<p>We are not the only ones using OpenDataKit to collect data. In fact, ODK is the most widely used data collection tool for mobile electronic surveys. There is a large ecosystem of tools and services, and it has become a standard. For years people have been gathering GPS points using this tool, and OpenMapKit’s primary contribution is the ability to collect OSM data and directly tag OSM data from the Android app.</p>
+<p>At the 2015 HOT Summit, we encountered several organizations that use ODK, and the one pioneer in particular that stuck out was Ivan Gayton from Doctors Without Borders.</p>
+<p>Ivan had a backpack full of <a class="reference external" href="https://en.wikipedia.org/wiki/Intel_Edison)">Intel Edisons</a>, a tiny, low power embedded system that runs linux and has integrated wifi. With 4 GB of SSD space and a 500Mhz dual core Intel Atom CPU, we don’t have very much power, but it is more than enough to power an ODK Aggregate Server.</p>
+<p>Ivan, having lead the OSM mapping effort in <a class="reference external" href="http://www.openstreetmap.org/node/27564973#map=12/-11.6712/27.5125">Lubumbashi, DRC</a> and other areas in Sub-Saharan Africa, was interested in using OpenMapKit, but he would need a solution that fully functions offline. So, to explore this concept, we took our computers outside, plugged in a fresh Intel Edision into our USB ports, and installed the classic <a class="reference external" href="https://opendatakit.org/use/aggregate/">ODK Aggregate</a>. After 45 minutes of admin, we got it running. And, we were able to submit OSM data in a survey from OpenMapKit to the device.</p>
+</div>
+<div class="section" id="putting-it-all-together">
+<h3>Putting it All Together<a class="headerlink" href="#putting-it-all-together" title="Permalink to this headline">¶</a></h3>
+<p>As I continued working with the Red Cross, <a class="reference external" href="http://spatialdev.com/">SpatialDev</a> entered a new phase of work–a project to bring OpenMapKit to the next level. The initial impetus for me was to build a server-side component for OpenMapKit, a simple web service for users to submit their survey data. Still, we wanted to have a deeper integration with OpenStreetMap tools. And, the offline problem had to be solved with more than just OpenDataKit. To achieve this goal, we began a partnership with <a class="reference external" href="http://stamen.com/">Stamen Design</a>, the creator of <a class="reference external" href="http://fieldpapers.org">Field Papers</a>. The premise: integrate OpenMapKit with Field Papers to create a single, cohesive experience.</p>
+<p>The workflow used in <a class="reference external" href="http://www.missingmaps.org/">Missing Maps</a> surveys and mapathons involves a suite of many open source software components. The initial idea was to use the Intel Edison as the server component for our simple ODK Aggregate server, now called OpenMapKit Server. In fact, OpenMapKit Server runs quite well on the Intel Edison. Our goal, however, was larger–we wanted to run our own OpenStreetMap server, as well as Field Papers on our low powered device.</p>
+</div>
+<div class="section" id="more-power">
+<h3>More Power<a class="headerlink" href="#more-power" title="Permalink to this headline">¶</a></h3>
+<p>Running our own OpenStreetMap using existing software requires a bit more horsepower than the Intel Edison provides. We began a software integration process, now solidified as POSM Build, on several pieces of hardware: the <a class="reference external" href="https://en.wikipedia.org/wiki/Raspberry_Pi">Raspberry Pi</a>, the <a class="reference external" href="http://www.brck.com/2014/11/brckpi/">Brck Pi</a>, as well as the <a class="reference external" href="https://en.wikipedia.org/wiki/Next_Unit_of_Computing">Intel NUC</a>. Long story short, we needed more power than the Pi had to offer, and the Intel NUC was just right.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../setup/" class="btn btn-neutral float-right" title="Getting a POSM" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../../odk2/rc2relief/" class="btn btn-neutral" title="RC2 Relief Tool" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright  CC-BY American Red Cross
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

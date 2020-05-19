@@ -1,0 +1,410 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>For Developers &mdash; field tech 0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Overview" href="../../omk/intro/" />
+    <link rel="prev" title="Cloud Installation" href="../cloud/" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../" class="icon icon-home"> field tech
+          
+
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../getting-started/">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../principles/">Humanitarian principles</a></li>
+</ul>
+<p class="caption"><span class="caption-text">ODK</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../odk/intro/">Open Data Kit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../odk/media/">ODK in the RCRC network</a></li>
+</ul>
+<p class="caption"><span class="caption-text">ODK2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../odk2/intro/">Open Data Kit 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../odk2/rc2relief/">RC2 Relief Tool</a></li>
+</ul>
+<p class="caption"><span class="caption-text">POSM</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../setup/">Getting a POSM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../offline-mapping/">Offline OSM mapping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../passel/">OpenDroneMap distributed processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/">General troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cloud/">Cloud Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">For Developers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#adding-a-component">Adding a component</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">OpenMapKit</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../omk/intro/">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../omk/installation/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../omk/survey-form/">Creating a survey form</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../omk/osm-basemap/">Creating the OSM basemap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../omk/walkthrough/">Walkthrough</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Street-level imagery</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../street-level/intro/">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../street-level/sony-action-cam/">Sony action cameras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../street-level/mapillary/">Mapillary</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Drones</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../drones/intro/">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../drones/processing/">Imagery processing</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Use cases</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../use-cases/intro/">Introduction</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">field tech</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../">Docs</a> &raquo;</li>
+        
+      <li>For Developers</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/posm/for-developers.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="for-developers">
+<h1>For Developers<a class="headerlink" href="#for-developers" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="adding-a-component">
+<h2>Adding a component<a class="headerlink" href="#adding-a-component" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference external" href="https://github.com/posm/posm-build/pull/114">WebODM Support</a> pull request is an example of how to introduce a relatively-complicated component to POSM (it also includes some other, unrelated bug fixes).</p>
+<p>However, at its root, adding a component consists of the following steps:</p>
+<ul class="simple">
+<li>add relevant settings to <code class="docutils literal notranslate"><span class="pre">kickstart/etc/settings</span></code> (and expose them in <code class="docutils literal notranslate"><span class="pre">kickstart/etc/posm.json</span></code>)</li>
+<li>add a systemd unit file as <code class="docutils literal notranslate"><span class="pre">kickstart/etc/systemd/system/&lt;component&gt;.service.hbs</span></code></li>
+<li>add HTTP proxy endpoints in <code class="docutils literal notranslate"><span class="pre">kickstart/etc/nginx-posm.conf</span></code></li>
+<li>create <code class="docutils literal notranslate"><span class="pre">kickstart/scripts/&lt;component&gt;-deploy.sh</span></code> and ensure that it’s executable (<code class="docutils literal notranslate"><span class="pre">chmod</span> <span class="pre">+x</span> <span class="pre">&lt;file&gt;</span></code>)</li>
+<li>add <code class="docutils literal notranslate"><span class="pre">make</span></code> targets to <code class="docutils literal notranslate"><span class="pre">live/Makefile</span></code> and reference them in <code class="docutils literal notranslate"><span class="pre">posm-core</span></code> (or another relevant target)</li>
+<li>document the name of the component in the README and/or elsewhere</li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">kickstart/etc/settings</span></code>:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>--- i/kickstart/etc/settings
++++ w/kickstart/etc/settings
+@@ -37,6 +37,7 @@ omk_server_port=3210
+ posm_admin_port=3211
+ osm_web_port=9000
+ cgimap_port=54321
++thing_port=1234
+
+ # web
+ # auth=true # uncomment this to enable web authentication
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">kickstart/etc/posm.json</span></code>:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>--- i/kickstart/etc/posm.json
++++ w/kickstart/etc/posm.json
+@@ -30,6 +30,7 @@
+   &quot;omk_server_port&quot;: &quot;{{omk_server_port}}&quot;,
+   &quot;osm_web_port&quot;: &quot;{{osm_web_port}}&quot;,
+   &quot;cgimap_port&quot;: &quot;{{cgimap_port}}&quot;,
++  &quot;thing_port&quot;: &quot;{{thing_port}}&quot;,
+   &quot;osm_posm_user&quot;: &quot;{{osm_posm_user}}&quot;,
+   &quot;osm_posm_description&quot;: &quot;{{osm_posm_description}}&quot;,
+   &quot;osm_pg_owner&quot;: &quot;{{osm_pg_owner}}&quot;,
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">kickstart/etc/systemd/system/thing.service.hbs</span></code>:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[Unit]</span>
+<span class="na">Description</span><span class="o">=</span><span class="s">The Thing</span>
+<span class="c1"># services to start after</span>
+<span class="na">After</span><span class="o">=</span><span class="s">docker.service</span>
+<span class="c1"># services that need to be running in order to start</span>
+<span class="na">Requires</span><span class="o">=</span><span class="s">docker.service</span>
+
+<span class="k">[Service]</span>
+<span class="na">Restart</span><span class="o">=</span><span class="s">always</span>
+<span class="na">ExecStartPre</span><span class="o">=</span><span class="s">-/usr/bin/docker kill %n</span>
+<span class="na">ExecStartPre</span><span class="o">=</span><span class="s">-/usr/bin/docker rm %n</span>
+<span class="c1"># start thing/thing, assuming it listens on :8000 within the container</span>
+<span class="na">ExecStart</span><span class="o">=</span><span class="s">/bin/bash -c &quot;docker run \</span>
+<span class="s">    --init \</span>
+<span class="s">    --rm \</span>
+<span class="s">    -p {{thing_port}}:8000 \</span>
+<span class="s">    --name %n \</span>
+<span class="s">    --tmpfs /tmp \</span>
+<span class="s">    posm/thing&quot;</span>
+
+<span class="k">[Install]</span>
+<span class="na">WantedBy</span><span class="o">=</span><span class="s">multi-user.target</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">kickstart/etc/nginx-posm.conf</span></code>:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>--- i/kickstart/etc/nginx-posm.conf
++++ w/kickstart/etc/nginx-posm.conf
+@@ -53,6 +53,10 @@ server {
+
+   # proxied locations
+
++  location /thing {
++    proxy_pass http://127.0.0.1:{{thing_port}};
++  }
++
+   location /tiles {
+     proxy_pass http://127.0.0.1:{{tessera_port}};
+   }
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">kickstart/scripts&lt;component&gt;-deploy.sh</span></code> takes the following form where <code class="docutils literal notranslate"><span class="pre">&lt;component&gt;</span></code> is <code class="docutils literal notranslate"><span class="pre">thing</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="c1"># Ubuntu-specific deployment</span>
+deploy_thing_ubuntu<span class="o">()</span> <span class="o">{</span>
+  <span class="c1"># pre-download the posm/thing image from Docker Hub</span>
+  docker pull posm/thing
+
+  <span class="c1"># copy systemd unit into place, replacing template variables in the process</span>
+  expand etc/systemd/system/thing.service.hbs /etc/systemd/system/thing.service
+
+  <span class="c1"># other files can be copied / expanded into place similarly</span>
+
+  <span class="c1"># enable the service so that it will run on subsequent restarts</span>
+  systemctl <span class="nb">enable</span> thing
+
+  <span class="c1"># start the service</span>
+  systemctl start thing
+
+  <span class="c1">## add thing to the list of services listed on posm.io</span>
+
+  <span class="c1"># load the existing list of apps</span>
+  <span class="nv">apps</span><span class="o">=</span><span class="k">$(</span>jq .apps /opt/posm-www/config.json<span class="k">)</span>
+
+  <span class="c1"># append Thing to the list of apps using an icon from https://blueprintjs.com/docs/#icons</span>
+  <span class="nv">new_apps</span><span class="o">=</span><span class="k">$(</span>cat <span class="s">&lt;&lt; EOF | jq -s &#39;.[0] + .[1] | unique&#39;</span>
+<span class="s">$apps</span>
+<span class="s">[</span>
+<span class="s">  {</span>
+<span class="s">    &quot;name&quot;:  &quot;Thing&quot;,</span>
+<span class="s">    &quot;icon&quot;: &quot;hand&quot;,</span>
+<span class="s">    &quot;url&quot;: &quot;//${posm_fqdn}/thing/&quot;</span>
+<span class="s">  }</span>
+<span class="s">]</span>
+<span class="s">EOF</span>
+<span class="k">)</span>
+
+  <span class="c1"># load the existing config</span>
+  <span class="nv">config</span><span class="o">=</span><span class="k">$(</span>jq . /opt/posm-www/config.json<span class="k">)</span>
+
+  <span class="c1"># write out a new config with the updated list of apps</span>
+  cat <span class="s">&lt;&lt; EOF | jq -s &#39;.[0] * .[1]&#39; &gt; /opt/posm-www/config.json</span>
+<span class="s">$config</span>
+<span class="s">{</span>
+<span class="s">  &quot;apps&quot;: $new_apps</span>
+<span class="s">}</span>
+<span class="s">EOF</span>
+<span class="o">}</span>
+
+deploy thing
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">live/Makefile</span></code>:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>--- i/live/Makefile
++++ w/live/Makefile
+@@ -155,7 +155,12 @@ telegraf: influxdb
+    lxc snapshot $$(cat container) $@
+    touch $@
+
+-posm: base nodejs ruby gis mysql postgis nginx osm fieldpapers omk tl carto tessera admin samba blink1 docker redis opendronemap imagery wifi influxdb telegraf
++thing: base
++   lxc exec $$(cat container) -- /root/posm-build/kickstart/scripts/bootstrap.sh $@
++   lxc snapshot $$(cat container) $@
++   touch $@
++
++posm: base nodejs ruby gis mysql postgis nginx osm fieldpapers omk tl carto tessera admin samba blink1 docker redis opendronemap imagery wifi influxdb telegraf thing
+    lxc exec $$(cat container) -- apt upgrade -y
+    lxc exec $$(cat container) -- apt-get autoremove -y
+    lxc snapshot $$(cat container) $@
+</pre></div>
+</div>
+<p>With these (or similar) patches applied, the component can be included in a POSM install by running <code class="docutils literal notranslate"><span class="pre">kickstart/scripts/bootstrap.sh</span> <span class="pre">-x</span> <span class="pre">thing</span></code> (the <code class="docutils literal notranslate"><span class="pre">-x</span></code> helps debug potential problems).</p>
+<p>To confirm that settings were set properly, run <code class="docutils literal notranslate"><span class="pre">jq</span> <span class="pre">.thing_port</span> <span class="pre">/etc/posm.json</span></code>.</p>
+<p>To stream systemd logs for the <code class="docutils literal notranslate"><span class="pre">thing</span></code> service, run <code class="docutils literal notranslate"><span class="pre">journalctl</span> <span class="pre">-fu</span> <span class="pre">thing</span></code>.</p>
+<p>To ensure that it’s running within Docker, run <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">ps</span> <span class="pre">|</span> <span class="pre">grep</span> <span class="pre">thing.service</span></code>.</p>
+<p>To see potential nginx syntax errors, run <code class="docutils literal notranslate"><span class="pre">journalctl</span> <span class="pre">-fu</span> <span class="pre">nginx</span></code>.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../omk/intro/" class="btn btn-neutral float-right" title="Overview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../cloud/" class="btn btn-neutral" title="Cloud Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright  CC-BY American Red Cross
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

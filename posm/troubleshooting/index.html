@@ -1,0 +1,378 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>General troubleshooting &mdash; field tech 0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Cloud Installation" href="../cloud/" />
+    <link rel="prev" title="OpenDroneMap distributed processing" href="../passel/" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../" class="icon icon-home"> field tech
+          
+
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../getting-started/">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../principles/">Humanitarian principles</a></li>
+</ul>
+<p class="caption"><span class="caption-text">ODK</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../odk/intro/">Open Data Kit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../odk/media/">ODK in the RCRC network</a></li>
+</ul>
+<p class="caption"><span class="caption-text">ODK2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../odk2/intro/">Open Data Kit 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../odk2/rc2relief/">RC2 Relief Tool</a></li>
+</ul>
+<p class="caption"><span class="caption-text">POSM</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../setup/">Getting a POSM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../offline-mapping/">Offline OSM mapping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../passel/">OpenDroneMap distributed processing</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">General troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#first-time-posm-install-fails">First-time POSM install fails</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#re-installing-the-core-posm-software">Re-installing the core POSM software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#i-m-connected-to-posm-when-i-try-to-reach-any-website-it-should-redirect-me-to-posm-io-but-it-sometimes-doesn-t">I’m connected to POSM. When I try to reach any website, it should redirect me to posm.io but it sometimes doesn’t</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#can-i-be-connected-to-the-internet-and-posm-at-the-same-time">Can I be connected to the internet and POSM at the same time?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#can-i-use-encrypted-odk-forms-to-protect-sensitive-data">Can I use encrypted ODK forms to protect sensitive data?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#multiple-deployments-are-buggy">Multiple deployments are buggy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-do-i-delete-an-old-deployment">How do I delete an old deployment?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-do-i-access-the-file-structure-behind-posm">How do I access the file structure behind POSM?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#i-have-more-than-one-posm-and-i-can-t-connect-to-the-second">I have more than one POSM and I can’t connect to the second</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#i-reinstalled-the-posm-software-and-now-i-can-t-connect">I reinstalled the POSM software and now I can’t connect</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#omk-was-working-but-stopped-i-m-getting-error-messages-from-phones-and-computers">OMK was working… but stopped. I’m getting error messages from phones and computers.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#can-i-push-omk-odk-data-to-the-server-through-a-cell-connection-or-actual-internet">Can I push OMK/ODK data to the server through a cell connection or actual internet?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../cloud/">Cloud Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../for-developers/">For Developers</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OpenMapKit</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../omk/intro/">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../omk/installation/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../omk/survey-form/">Creating a survey form</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../omk/osm-basemap/">Creating the OSM basemap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../omk/walkthrough/">Walkthrough</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Street-level imagery</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../street-level/intro/">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../street-level/sony-action-cam/">Sony action cameras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../street-level/mapillary/">Mapillary</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Drones</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../drones/intro/">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../drones/processing/">Imagery processing</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Use cases</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../use-cases/intro/">Introduction</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">field tech</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../">Docs</a> &raquo;</li>
+        
+      <li>General troubleshooting</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/posm/troubleshooting.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="general-troubleshooting">
+<h1>General troubleshooting<a class="headerlink" href="#general-troubleshooting" title="Permalink to this headline">¶</a></h1>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<p class="last">This section is being edited and updated. Please let us know if you find any errors or omissions.</p>
+</div>
+<p>We’ve noticed a few errors (or noticed ourselves making user
+errors) when using POSM. Here’s a quick list of some of these issues and how to solve
+them.</p>
+<div class="section" id="first-time-posm-install-fails">
+<h2>First-time POSM install fails<a class="headerlink" href="#first-time-posm-install-fails" title="Permalink to this headline">¶</a></h2>
+<p>Did you prepare the USB stick, plug it into POSM, and try to boot… only to get
+an error message? This can be an issue if your USB stick has an overall folder
+that contains everything that you extracted from the POSM <cite>.iso</cite> file. It can
+also be an issue if you extracted the files and then moved them manually onto
+the USB stick. There are hidden files in the package which will not follow if
+you try to manually move the contents. You can fix this by using an extraction
+tool (like The Unarchiver for Mac or 7-Zip for Windows) to extract the contents
+directly onto the USB stick.</p>
+</div>
+<div class="section" id="re-installing-the-core-posm-software">
+<h2>Re-installing the core POSM software<a class="headerlink" href="#re-installing-the-core-posm-software" title="Permalink to this headline">¶</a></h2>
+<p>Let’s say there’s a new version of the POSM stack and you want to upgrade. You
+can do this by following the normal first-time install process: download
+software, prep USB stick, install onto POSM. The software will overwrite and
+previous versions.</p>
+</div>
+<div class="section" id="i-m-connected-to-posm-when-i-try-to-reach-any-website-it-should-redirect-me-to-posm-io-but-it-sometimes-doesn-t">
+<h2>I’m connected to POSM. When I try to reach any website, it should redirect me to posm.io but it sometimes doesn’t<a class="headerlink" href="#i-m-connected-to-posm-when-i-try-to-reach-any-website-it-should-redirect-me-to-posm-io-but-it-sometimes-doesn-t" title="Permalink to this headline">¶</a></h2>
+<p>Secure websites (ie websites whose URL starts with <a class="reference external" href="https://">https://</a> instead of <a class="reference external" href="http://">http://</a>)
+will not redirect to the posm.io homepage. So, if you click any link in your
+bookmarks, it may not redirect to posm.io.</p>
+</div>
+<div class="section" id="can-i-be-connected-to-the-internet-and-posm-at-the-same-time">
+<h2>Can I be connected to the internet and POSM at the same time?<a class="headerlink" href="#can-i-be-connected-to-the-internet-and-posm-at-the-same-time" title="Permalink to this headline">¶</a></h2>
+<p>Yes. Plug POSM into Ethernet and, in the admin interface, turn on Bridge Mode.</p>
+</div>
+<div class="section" id="can-i-use-encrypted-odk-forms-to-protect-sensitive-data">
+<h2>Can I use encrypted ODK forms to protect sensitive data?<a class="headerlink" href="#can-i-use-encrypted-odk-forms-to-protect-sensitive-data" title="Permalink to this headline">¶</a></h2>
+<p>Yes. You will need to download and set up ODK Briefcase to do this.
+<a class="reference external" href="https://opendatakit.org/help/encrypted-forms/">Instructions are on the ODK
+site</a>. You will need to set up a
+public and private key and include the public key in your ODK form. To access
+submissions, open ODK Briefcase and <cite>Pull</cite> the submissions, then <cite>Export</cite> them.
+You will get a <cite>.csv</cite> file with your decrypted data.</p>
+</div>
+<div class="section" id="multiple-deployments-are-buggy">
+<h2>Multiple deployments are buggy<a class="headerlink" href="#multiple-deployments-are-buggy" title="Permalink to this headline">¶</a></h2>
+<p>POSM sometimes has a hard time dealing with multiple deployments - it may
+struggle when making MBTiles archives, or when first loading a deployment onto
+phones. We’ve solved this by just trying those processes again. It is also a
+good idea to keep the POSM “clean” by deleting old deployments that are no
+longer needed.</p>
+</div>
+<div class="section" id="how-do-i-delete-an-old-deployment">
+<h2>How do I delete an old deployment?<a class="headerlink" href="#how-do-i-delete-an-old-deployment" title="Permalink to this headline">¶</a></h2>
+<p>To do this, you will need to use an FTP client like
+<a class="reference external" href="https://cyberduck.io/?l=en">Cyberduck</a> (or command line) to connect (or “SSH”)
+into POSM.</p>
+<p>Power up the POSM and connect to it from your computer. Launch Cyberduck and
+start a new connection with the following parameters:</p>
+<ul class="simple">
+<li>Type: <cite>SSH</cite></li>
+<li>Server: <cite>posm.io</cite></li>
+<li>Username: <cite>root</cite></li>
+<li>Password: <cite>posm</cite></li>
+</ul>
+<img alt="../../_images/cyberduck.png" src="../../_images/cyberduck.png" />
+<p>You will see files under <cite>/opt/data</cite>. Always be extremely careful if deleting
+submitting field data.</p>
+</div>
+<div class="section" id="how-do-i-access-the-file-structure-behind-posm">
+<h2>How do I access the file structure behind POSM?<a class="headerlink" href="#how-do-i-access-the-file-structure-behind-posm" title="Permalink to this headline">¶</a></h2>
+<p>To do this, you will need to use an FTP client like
+<a class="reference external" href="https://cyberduck.io/?l=en">Cyberduck</a> (or command line) to connect (or “SSH”)
+into POSM.</p>
+<p>Power up the POSM and connect to it from your computer. Launch Cyberduck and
+start a new connection with the following parameters:</p>
+<ul class="simple">
+<li>Type: <cite>SSH</cite></li>
+<li>Server: <cite>posm.io</cite></li>
+<li>Username: <cite>root</cite></li>
+<li>Password: <cite>posm</cite></li>
+</ul>
+<img alt="../../_images/cyberduck.png" src="../../_images/cyberduck.png" />
+<div class="admonition-todo admonition" id="index-1">
+<p class="first admonition-title">Todo</p>
+<p class="last">The file structure looks like this: (needs completion + screenshot)</p>
+</div>
+</div>
+<div class="section" id="i-have-more-than-one-posm-and-i-can-t-connect-to-the-second">
+<h2>I have more than one POSM and I can’t connect to the second<a class="headerlink" href="#i-have-more-than-one-posm-and-i-can-t-connect-to-the-second" title="Permalink to this headline">¶</a></h2>
+<p>Read on for the answer to the next question.</p>
+</div>
+<div class="section" id="i-reinstalled-the-posm-software-and-now-i-can-t-connect">
+<h2>I reinstalled the POSM software and now I can’t connect<a class="headerlink" href="#i-reinstalled-the-posm-software-and-now-i-can-t-connect" title="Permalink to this headline">¶</a></h2>
+<p>If you’ve got more than one POSM, you will not be able to connect your computer using SSH.
+You will get errors accessing <cite>posm.io</cite>, Cyberduck and Terminal won’t not connect, etc.</p>
+<p>To fix this, open your <cite>known_hosts</cite> file (<cite>~/.ssh/known_hosts</cite>) in a text
+editor and delete each row that begins with <cite>posm.local</cite>, <cite>posm.io</cite>, or
+<cite>172.16.1.1</cite>. Save the changes and try again.</p>
+</div>
+<div class="section" id="omk-was-working-but-stopped-i-m-getting-error-messages-from-phones-and-computers">
+<h2>OMK was working… but stopped. I’m getting error messages from phones and computers.<a class="headerlink" href="#omk-was-working-but-stopped-i-m-getting-error-messages-from-phones-and-computers" title="Permalink to this headline">¶</a></h2>
+<p>This has happened when using a public fileshare with a lot of devices. In
+Terminal, connect to POSM over SSH (<cite>ssh root&#64;posm.io</cite>, password <cite>posm</cite>) and
+then run this command to restart OMK Server: <cite>service omk-server restart</cite>.</p>
+</div>
+<div class="section" id="can-i-push-omk-odk-data-to-the-server-through-a-cell-connection-or-actual-internet">
+<h2>Can I push OMK/ODK data to the server through a cell connection or actual internet?<a class="headerlink" href="#can-i-push-omk-odk-data-to-the-server-through-a-cell-connection-or-actual-internet" title="Permalink to this headline">¶</a></h2>
+<p>Yes… but it’s a little tricky. This would involve creating a parallel server
+in the cloud and then integrating this data back into the POSM server. If doing
+this is worth it (or just interesting) to you, then <a class="reference external" href="https://hackmd.io/EYFhA4DYDMFMEYC0BDEBmYiSXmx4BOAY0iwHZoAGAVnnFkrICYyg">here are the
+instructions</a>.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../cloud/" class="btn btn-neutral float-right" title="Cloud Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../passel/" class="btn btn-neutral" title="OpenDroneMap distributed processing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright  CC-BY American Red Cross
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

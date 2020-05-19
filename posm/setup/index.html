@@ -1,0 +1,517 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Getting a POSM &mdash; field tech 0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Offline OSM mapping" href="../offline-mapping/" />
+    <link rel="prev" title="Overview" href="../intro/" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../" class="icon icon-home"> field tech
+          
+
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../getting-started/">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../principles/">Humanitarian principles</a></li>
+</ul>
+<p class="caption"><span class="caption-text">ODK</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../odk/intro/">Open Data Kit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../odk/media/">ODK in the RCRC network</a></li>
+</ul>
+<p class="caption"><span class="caption-text">ODK2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../odk2/intro/">Open Data Kit 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../odk2/rc2relief/">RC2 Relief Tool</a></li>
+</ul>
+<p class="caption"><span class="caption-text">POSM</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/">Overview</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting a POSM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#anatomy-of-a-posm">Anatomy of a POSM</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#hardware">Hardware</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#software">Software</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#other-things-you-will-need">Other things you will need</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#first-time-install">First-time install</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#etcher">Etcher</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#manual-configuration">Manual configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#configuring-the-usb-stick">Configuring the USB stick</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#extracting-the-posm-download-aka-iso-file-onto-the-usb-stick">Extracting the POSM download (AKA “ISO file”) onto the USB stick</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#posm-first-time-install">POSM first-time install</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#recommended-file-shares">Recommended file shares</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#accessing-admin-settings">Accessing admin settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#networking">Networking</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#wifi">WiFi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wan">WAN</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../offline-mapping/">Offline OSM mapping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../passel/">OpenDroneMap distributed processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/">General troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cloud/">Cloud Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../for-developers/">For Developers</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OpenMapKit</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../omk/intro/">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../omk/installation/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../omk/survey-form/">Creating a survey form</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../omk/osm-basemap/">Creating the OSM basemap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../omk/walkthrough/">Walkthrough</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Street-level imagery</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../street-level/intro/">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../street-level/sony-action-cam/">Sony action cameras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../street-level/mapillary/">Mapillary</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Drones</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../drones/intro/">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../drones/processing/">Imagery processing</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Use cases</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../use-cases/intro/">Introduction</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">field tech</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../">Docs</a> &raquo;</li>
+        
+      <li>Getting a POSM</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/posm/setup.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="getting-a-posm">
+<h1>Getting a POSM<a class="headerlink" href="#getting-a-posm" title="Permalink to this headline">¶</a></h1>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<p class="last">This section is being edited and updated. Please let us know if you find any errors or omissions.</p>
+</div>
+<p>Interested in getting a POSM? This involves a little bit of DIY, but advanced
+tech skills are <strong>not</strong> required. This site has instructions that walk through
+the whole process.</p>
+<p>First, you order the hardware kit (you’ll have to assemble a few things). Next,
+you load the core software onto the device for a first-time install. This
+transforms the unit into a POSM. After that, the POSM is ready to go and can be
+used over and over again.</p>
+<div class="section" id="anatomy-of-a-posm">
+<h2>Anatomy of a POSM<a class="headerlink" href="#anatomy-of-a-posm" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="hardware">
+<h3>Hardware<a class="headerlink" href="#hardware" title="Permalink to this headline">¶</a></h3>
+<p>Our initial hardware target is an Intel NUC w/ a 256GB SSD and 8GB of RAM. Initial measurements show it drawing less than 10W. It can also operate on a range of voltages between 12-19V. The spec’d components for the original version of POSM run about USD ~$300 in total:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://smile.amazon.com/gp/product/B00XPVQHDU">Intel NUC Kit - NUC5PPYH</a> -
+2.6 GHz quad core Pentium (N3700, 6W TDP). It includes a basic case. The v0.8.0 release was also tested on the NUC7PJYH.</li>
+<li><a class="reference external" href="http://smile.amazon.com/gp/product/B00OAJ412U">Samsung 850 EVO 250GB</a></li>
+<li><a class="reference external" href="http://smile.amazon.com/gp/product/B00KQCOTCM">8GB 1600MHz DDR3L CL9 SODIMM</a></li>
+<li>Optionally, <a class="reference external" href="https://www.thinkpenguin.com/gnu-linux/wireless-n-dual-band-bluetooth-40-m2-ngff-combo-card-tpe-m2ncrd">Wireless N Dual Band + Bluetooth 4.0 M.2 NGFF Combo Card (TPE-M2NCRD)</a> (which we’ve tested) or the newer version of that card <a class="reference external" href="https://www.thinkpenguin.com/gnu-linux/wireless-n-m2-ngff-card-v2-tpe-m2ncrd2">Wireless N M.2 NGFF Card v2 (TPE-M2NCRD2)</a>. This is needed if you plan to have more than 14 devices connected at a time. Replace the stock wireless card with this.</li>
+</ul>
+<p>If you want to be able to use OpenDroneMap with POSM, then you will
+want slightly more souped-up hardware with greater processing power.
+Instead of the NUC unit above, order the following, somewhat more expensive
+model:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://smile.amazon.com/gp/product/B01DJ9XS52">Intel NUC kit - NUC6i7KYK</a></li>
+<li><a class="reference external" href="https://smile.amazon.com/Samsung-960-EVO-Internal-MZ-V6E250BW/dp/B01LYFKX41">Samsung 960 EVO Series - 500GB NVMe - M.2 Internal SSD (MZ-V6E500BW)</a> or larger (or equivalent)</li>
+<li><a class="reference external" href="https://smile.amazon.com/d/Computer-Memory/Crucial-16GBx2-PC4-17000-SODIMM-260-Pin/B015YPB8ME/">Crucial 32GB Kit (16GBx2) DDR4 2133 MT/s (PC4-17000) DR x8 SODIMM 260-Pin Memory - CT2K16G4SFD8213</a> (or equivalent)</li>
+</ul>
+<p>Follow the manufacturers’ instructions when assembling your hardware.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Unfortunately, the POSM installer on Raspberry Pi won’t work. Raspbian is based on Debian, not Ubuntu. Also, the Pi CPU architecture is ARM rather than x86/x64 by Intel or AMD. Docker-based apps have to be packaged specifically for ARM architecture, which the POSM apps are not. A standalone installation of OpenMapKit Server should be possible, but we don’t have any guidance on that.</p>
+</div>
+</div>
+<div class="section" id="software">
+<h3>Software<a class="headerlink" href="#software" title="Permalink to this headline">¶</a></h3>
+<p>Once you’ve ordered and assembled the hardware components, you’ll load the device with a
+core software package that transforms it into a POSM. The package includes the
+core POSM software, all of the tools that POSM supports, and other
+downloads/apps to support mapping and mobile data collection.</p>
+<p>The latest POSM download can be found on the project’s <a class="reference external" href="https://github.com/posm/posm-build/releases">releases page</a> on GitHub.</p>
+</div>
+<div class="section" id="other-things-you-will-need">
+<h3>Other things you will need<a class="headerlink" href="#other-things-you-will-need" title="Permalink to this headline">¶</a></h3>
+<p>The POSM hardware is a mini-computer. To set it up for the very first time, you’ll need to plug in the following:</p>
+<ul class="simple">
+<li>USB keyboard</li>
+<li>external monitor or TV with suitable video input</li>
+<li>USB memory stick (large enough to fit the POSM release you plan on installing)</li>
+</ul>
+<p>When provisioning the POSM for mapping a specific area you’ll also need an internet connection.</p>
+</div>
+</div>
+<div class="section" id="first-time-install">
+<h2>First-time install<a class="headerlink" href="#first-time-install" title="Permalink to this headline">¶</a></h2>
+<p>First, download the latest <a class="reference external" href="https://github.com/posm/posm-build/releases">POSM release</a> and create a USB installer from it.
+If you plan on using OpenDroneMap to process imagery, you’ll want to download the <code class="docutils literal notranslate"><span class="pre">superposm-0.x.x.iso</span></code> variant. Otherwise, you’re fine with the standard <code class="docutils literal notranslate"><span class="pre">posm-0.x.x.iso</span></code>.</p>
+<div class="section" id="etcher">
+<h3>Etcher<a class="headerlink" href="#etcher" title="Permalink to this headline">¶</a></h3>
+<p>Etcher is the easiest way to create a USB installer.</p>
+<ul class="simple">
+<li>Download <a class="reference external" href="https://www.balena.io/etcher/">Etcher</a> and install it on your computer.</li>
+<li>Insert a USB memory stick. It will be wiped of any existing data in the process, so make sure you don’t have any files on it that you want to keep! It needs to be bigger than the POSM release file (4GB or larger USB for the standard POSM, 8GB or larger for the superPOSM).</li>
+<li>Open Etcher. Select the iso file, select the USB media drive, and click “Flash!”. The program will go through “Flashing” and “Validating”. It will take a few minutes.</li>
+<li>Once the program completes you can eject the USB drive. You’re ready for the next step. If you’ve used Etcher you can skip down to <a class="reference internal" href="#posm-first-time-install"><span class="std std-ref">POSM first-time install</span></a>.</li>
+</ul>
+<img alt="../../_images/etcher0.png" src="../../_images/etcher0.png" />
+<img alt="../../_images/etcher1.png" src="../../_images/etcher1.png" />
+<img alt="../../_images/etcher2.png" src="../../_images/etcher2.png" />
+<img alt="../../_images/etcher3.png" src="../../_images/etcher3.png" />
+</div>
+<div class="section" id="manual-configuration">
+<h3>Manual configuration<a class="headerlink" href="#manual-configuration" title="Permalink to this headline">¶</a></h3>
+<p>Instead of using Etcher, you can also create the USB installer manually by extracting the POSM software into a set of folders on your USB.</p>
+<div class="section" id="configuring-the-usb-stick">
+<h4>Configuring the USB stick<a class="headerlink" href="#configuring-the-usb-stick" title="Permalink to this headline">¶</a></h4>
+<p>First you’ll have to change the USB formatting (UEFI booting is the technical term for what’s being facilitated).</p>
+<div class="section" id="mac">
+<h5>Mac<a class="headerlink" href="#mac" title="Permalink to this headline">¶</a></h5>
+<p>On a Mac, plug in your USB stick and open Disk Utility. Navigate to the USB
+stick and click “Erase”.</p>
+<p>Give the USB stick a name. Set the format to <code class="docutils literal notranslate"><span class="pre">MS-DOS</span> <span class="pre">(FAT)</span></code> and the scheme to
+<code class="docutils literal notranslate"><span class="pre">GUID</span> <span class="pre">Partition</span> <span class="pre">Map</span></code>. Then click “Erase”, which will delete all existing files
+and reformat the drive to make it compatible with the POSM. See below:</p>
+<img alt="../../_images/format.png" src="../../_images/format.png" />
+</div>
+<div class="section" id="windows">
+<h5>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h5>
+<p>On a PC, connect the USB drive, then go to “Computer” or “My Computer”,
+right-click the drive and select “Format…” from the menu. Set the drive to FAT.</p>
+</div>
+</div>
+<div class="section" id="extracting-the-posm-download-aka-iso-file-onto-the-usb-stick">
+<h4>Extracting the POSM download (AKA “ISO file”) onto the USB stick<a class="headerlink" href="#extracting-the-posm-download-aka-iso-file-onto-the-usb-stick" title="Permalink to this headline">¶</a></h4>
+<p>If you don’t use command line, then moving the POSM download bundle involves
+downloading a file extractor to extract it (we use <a class="reference external" href="https://itunes.apple.com/us/app/the-unarchiver/id425424353?mt=12">The
+Unarchiver</a>
+for Mac or <a class="reference external" href="https://www.7-zip.org/">7-Zip</a> for Windows).</p>
+<p>On a Mac, open The Unarchiver and navigate to the <cite>Extraction</cite> tab. Where it
+says “Create a new folder for the extracted files”, select <cite>Never</cite>. The reason
+we do this is because the POSM download has to be extracted and moved onto the
+USB stick. Most file extractors will place extracted files into an overall
+folder. The POSM unit can’t handle this, and you can’t just manually move
+everything one level up because there are hidden files that will get missed.</p>
+<img alt="../../_images/extraction.png" src="../../_images/extraction.png" />
+<p>Use your extraction client (The Unarchiver or 7-Zip) to extract the download
+(<cite>posm-0.7.2.iso</cite>) from your computer onto the USB stick… again, making sure that the files do
+not end up in an overall folder. On a Mac, you do this by right-clicking the
+<cite>posm-0.7.2.iso</cite> file and selecting <cite>Open with…</cite> … <cite>The Unarchiver</cite>. Set the
+destination folder to the USB stick and press “Extract”. If you don’t see the option in
+the right-click menu, then open The Unarchiver app and go to <cite>File</cite> then select <cite>Unarchive To…</cite> and
+first select the iso file and then select the USB drive.</p>
+<p>As an alternative to The Unarchiver, on a Mac you can install <cite>7z</cite> with homebrew and then use it to extract the contents:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brew install p7zip
+7z x PATH/TO/FILE/posm-0.7.2.iso -o/Volumes/NAME_OF_USB
+</pre></div>
+</div>
+<p>Regardless of the extraction method, the contents of your USB stick should look like this:</p>
+<img alt="../../_images/finder.png" src="../../_images/finder.png" />
+</div>
+</div>
+<div class="section" id="posm-first-time-install">
+<span id="id2"></span><h3>POSM first-time install<a class="headerlink" href="#posm-first-time-install" title="Permalink to this headline">¶</a></h3>
+<p>Alright, you’re ready. Take the Intel NUC unit that you’ve assembled and
+plug in an external monitor, a keyboard, and the USB stick you’ve prepared. Turn
+the power on.</p>
+<p>You’ll see a dark boot screen appear on your monitor with the Intel NUC logo and
+a few options in the bottom-right corner. Press F10 when prompted. You’ll have
+to be quick with this because the prompt only lasts a few seconds.
+If you miss it, then just turn the power off and try again.</p>
+<p>This will open a menu (see below, note that in the image where it reads <code class="docutils literal notranslate"><span class="pre">SanDisk</span></code> it will read with a description of your USB drive - for example <code class="docutils literal notranslate"><span class="pre">Lexar</span> <span class="pre">USB</span> <span class="pre">Flash</span> <span class="pre">Drive</span> <span class="pre">1100</span></code>) where you have to select which device to boot
+from. Use the arrow keys to select your USB stick, then hit enter.</p>
+<img alt="../../_images/bootscreen.jpg" src="../../_images/bootscreen.jpg" />
+<p>You’ll be prompted by a screen that says GNU GRUB at the top and asks if you
+want to do an automated install. You do. You can also wait 10 seconds and it
+will start the automated install on its own.</p>
+<p>That’s it. The software will install onto the NUC unit, transforming it into a
+POSM. This can take some time. Finally, the screen will look like this when the whole process is complete.</p>
+<img alt="../../_images/completed.jpg" src="../../_images/completed.jpg" />
+<p>Disconnect the USB stick and with <code class="docutils literal notranslate"><span class="pre">Reboot</span> <span class="pre">Now</span></code> selected, press Enter.</p>
+<img alt="../../_images/completed2.jpg" src="../../_images/completed2.jpg" />
+<p>After the reboot, you’ll be prompted with a screen asking you for login credentials. You can log in if you want. The
+username is <code class="docutils literal notranslate"><span class="pre">root</span></code> and password is <code class="docutils literal notranslate"><span class="pre">posm</span></code>. Finally, the screen will look like this when the whole process is complete.</p>
+<img alt="../../_images/logged-in.jpg" src="../../_images/logged-in.jpg" />
+<p>If the login prompt is obscured by other text written to the console afterwards. Pressing <code class="docutils literal notranslate"><span class="pre">Enter</span></code> a few times or <code class="docutils literal notranslate"><span class="pre">^L</span></code> should reset the screen.</p>
+<p>You can disconnect the keyboard and monitor. The POSM is set up and ready for use.</p>
+<p>Reminder: you only need to do this the very first time you assemble your POSM and set it up (or upgrade the core POSM software). After that, it’s just a matter of working with data, forms, and such.</p>
+<p>Note: if you ever want to wipe and reinstall the core POSM software (to install
+a new version, etc), then it’s the same process - prep the USB stick, plug in
+the monitor etc, and press <code class="docutils literal notranslate"><span class="pre">F10</span></code> when prompted. The NUC unit will overwrite the
+existing installation with new software from the USB stick.</p>
+</div>
+</div>
+<div class="section" id="recommended-file-shares">
+<h2>Recommended file shares<a class="headerlink" href="#recommended-file-shares" title="Permalink to this headline">¶</a></h2>
+<p>When preparing a POSM for use in the field, we recommend downloading the following desktop and mobile apps and copying them to the public file share (<code class="docutils literal notranslate"><span class="pre">\\POSM\public</span></code> / <code class="docutils literal notranslate"><span class="pre">smb://posm/public</span></code>) so that they will be available once offline or on slower network connections:</p>
+<ul class="simple">
+<li>OpenDataKit (ODK Collect for Android apk file) - core data collection tool</li>
+<li>OpenMapKit (Android apk file) - extends ODK to modify OSM data (included with POSM)</li>
+<li>Java JRE (32-bit Windows)</li>
+<li>Java JRE (64-bit Windows)</li>
+<li>Java JRE (macOS)</li>
+<li>JOSM (jar file)</li>
+<li>QGIS (32-bit Windows)</li>
+<li>QGIS (64-bit Windows)</li>
+<li>QGIS (macOS)</li>
+<li>OpenRefine (Windows)</li>
+<li>OpenRefine (macOS)</li>
+<li>AppLock (Android apk file)</li>
+<li>OpenSignal (Android apk file)</li>
+<li>OsmAnd (Android apk file) and map files for the area</li>
+</ul>
+<p>Please let us know additional tools that you find useful that should be included on this list.</p>
+</div>
+<div class="section" id="accessing-admin-settings">
+<span id="posm-admin-settings"></span><h2>Accessing admin settings<a class="headerlink" href="#accessing-admin-settings" title="Permalink to this headline">¶</a></h2>
+<p>As of the 0.8.0 release of POSM (via <a class="reference external" href="mailto:posm/posm-admin-ui&#37;&#52;&#48;2&#46;2&#46;0">posm/posm-admin-ui<span>&#64;</span>2<span>&#46;</span>2<span>&#46;</span>0</a>), the admin sidebar does not include links to “admin” functionality by default.</p>
+<p>To access general-purpose admin functionality (backups at the moment), go directly to <code class="docutils literal notranslate"><span class="pre">http://posm.io/posm/admin</span></code>.</p>
+<img alt="../../_images/screen-posm-admin.png" src="../../_images/screen-posm-admin.png" />
+<p>To access network settings, go directly to <code class="docutils literal notranslate"><span class="pre">http://posm.io/posm/settings</span></code>.</p>
+<img alt="../../_images/screen-posm-settings.png" src="../../_images/screen-posm-settings.png" />
+<p>To include links to admin functionality, edit <code class="docutils literal notranslate"><span class="pre">/opt/posm-www/config.json</span></code> and remove <code class="docutils literal notranslate"><span class="pre">&quot;showAdmin&quot;:</span> <span class="pre">false,</span></code>.</p>
+<p>Alternately, set <code class="docutils literal notranslate"><span class="pre">posm_show_admin=true</span></code> in <code class="docutils literal notranslate"><span class="pre">kickstart/etc/settings</span></code> prior to installation (only relevant when installing from source).</p>
+</div>
+<div class="section" id="networking">
+<h2>Networking<a class="headerlink" href="#networking" title="Permalink to this headline">¶</a></h2>
+<p>POSM is configured to be a WiFi Access Point (AP), allowing laptops and phones to connect to it
+directly even if no other network is available. It supports 2 modes: “captive portal” and “bridged”.</p>
+<p>In “captive portal” mode, after clients connect, all HTTP traffic will be intercepted and redirected
+to <code class="docutils literal notranslate"><span class="pre">posm.io</span></code>, which is POSM’s landing page. Requests to web sites over HTTPS will fail. Only access
+to POSM services (<code class="docutils literal notranslate"><span class="pre">posm.io</span></code> and <code class="docutils literal notranslate"><span class="pre">osm.posm.io</span></code>) is allowed in this mode. If the WAN port is plugged
+into an active network, the POSM itself will have network access but clients will not.</p>
+<p>In “bridged” mode, clients will not be automatically redirected and will instead have internet
+access, forwarded through whichever WAN device is connected (see “WAN” below).</p>
+<p>Switching between these modes can be done using POSM Admin.</p>
+<div class="section" id="wifi">
+<h3>WiFi<a class="headerlink" href="#wifi" title="Permalink to this headline">¶</a></h3>
+<p>When using POSM with one of the recommended NUCs, the pre-installed wireless cards can only be used
+in 802.11a/g/b mode (this is the default when setting up a new device). Additionally, these cards
+are only able to support 15 clients (including the POSM device itself). If you need to support more
+concurrent clients, we recommend replacing the wireless interface controller (WNIC) with one which supports more clients
+(we don’t know the actual limit, but it’s at least 25) <strong>and</strong> supports 802.11n mode (faster) such as <a class="reference external" href="https://www.thinkpenguin.com/gnu-linux/wireless-n-dual-band-bluetooth-40-m2-ngff-combo-card-tpe-m2ncrd">Wireless N Dual Band + Bluetooth 4.0 M.2 NGFF Combo Card (TPE-M2NCRD)</a> (which we’ve tested) or the newer version of that card <a class="reference external" href="https://www.thinkpenguin.com/gnu-linux/wireless-n-m2-ngff-card-v2-tpe-m2ncrd2">Wireless N M.2 NGFF Card v2 (TPE-M2NCRD2)</a>.</p>
+<p>If you replace the card on an existing device, you’ll need to clear out the <code class="docutils literal notranslate"><span class="pre">udev</span></code> rules to
+allow Linux to identify the new card. You’ll also want to re-bootstrap <code class="docutils literal notranslate"><span class="pre">wifi</span></code> after changing
+<code class="docutils literal notranslate"><span class="pre">posm_wifi_80211n</span></code> to <code class="docutils literal notranslate"><span class="pre">1</span></code> in order to enable 802.11n mode.</p>
+<div class="admonition-todo admonition" id="index-1">
+<p class="first admonition-title">Todo</p>
+<p class="last">Add details about how to clear out the <code class="docutils literal notranslate"><span class="pre">udev</span></code> rules. Running <code class="docutils literal notranslate"><span class="pre">udevadm</span> <span class="pre">control</span> <span class="pre">--reload-rules</span> <span class="pre">&amp;&amp;</span> <span class="pre">udevadm</span> <span class="pre">trigger</span></code> may work.</p>
+</div>
+<p>An additional option which we don’t have much experience with yet is to purchase something like a
+Ubiquiti UAP-AC-LITE and plug it into the LAN interface (which doesn’t actually exist on the NUCs,
+since they only have a single NIC which is configured as a WAN port). This will offload the
+management of wireless clients (but not DNS or DHCP), allowing more concurrent clients to connect
+(127 per radio; some UAPs include multiple radios). This approach is also assumed to increase the
+WiFi range.</p>
+</div>
+<div class="section" id="wan">
+<h3>WAN<a class="headerlink" href="#wan" title="Permalink to this headline">¶</a></h3>
+<p>When in “bridge” mode, POSM is configured to pass traffic to non-<cite>wlan</cite> interfaces. Practically
+speaking, this means that you can plug in an ethernet cable to the WAN port, POSM will obtain an IP
+address and DNS servers using DHCP, and will configure <cite>iptables</cite> to forward traffic.</p>
+<p>When used with an Android device that has USB tethering enabled, plugging in a USB cable will create
+an additional network interface and POSM will attempt to forward traffic to it.</p>
+<p>Behavior with both a wired network and a tethered Android device is unknown; it’s suspected that the
+interface plugged in last will be used to forward traffic. Unplugging either will likely remove all
+forwarding rules.</p>
+<p>For more information about this, see the hotplug scripts in TODO.</p>
+<p>Some services on the POSM device are available via the WAN port, most usefully SSH. DNS, DHCP, and
+SMB are limited to the LAN. POSM uses <cite>avahi-daemon</cite> to broadcast its presence on the WAN, meaning
+that <cite>ssh root&#64;posm.local</cite> may be used to connect even if its IP address is unknown.</p>
+<p>POSM has also been configured to support link-local connections (TODO WTF is this actually called?
+these are the 169.whatever IPS), allowing an ethernet cable to be plugged into both the WAN port and
+a client. Both devices will auto-assign themselves IP addresses in the same rang. This, combined
+with mDNS broadcasts, allows direct connections. Beyond facilitating debugging without a display,
+this is the fastest way to copy data to or from the device.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../offline-mapping/" class="btn btn-neutral float-right" title="Offline OSM mapping" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../intro/" class="btn btn-neutral" title="Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright  CC-BY American Red Cross
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
