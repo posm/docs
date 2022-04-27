@@ -8,7 +8,6 @@ install:
 - pip install -r requirements.txt
 script:
 - make deploy
-- echo "posm.io" > ./_build/CNAME
 deploy:
   provider: pages
   skip-cleanup: true
